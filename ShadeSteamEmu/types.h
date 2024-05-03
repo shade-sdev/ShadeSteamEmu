@@ -24,7 +24,7 @@ typedef void* (*ISteamApps_GetPtr)(void* steam_client_ptr,
 typedef void* (*ISteamUtils_GetPtr)(void* steam_client_ptr,
                                     void* hsteam_pipe_ptr,
                                     const char* version);
-SteamAPI_ISteamClient_GetISteamMatchmaking
+
 typedef void* (*ISteamMatchMaking_GetPtr)(void* steam_client_ptr,
                                           void* hsteam_user_ptr,
                                           void* hsteam_pipe_ptr,
