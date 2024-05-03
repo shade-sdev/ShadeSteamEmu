@@ -45,37 +45,51 @@ extern "C" __declspec(dllexport) void* SteamInternal_CreateInterface(const char*
 }
 
 extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamUser(void* steam_client_ptr,
-                                                                           void* steam_user_ptr,
-                                                                           void* steam_pipe_ptr,
+                                                                           void* hsteam_user_ptr,
+                                                                           void* hsteam_pipe_ptr,
                                                                            const char* version)
 {
-    return steam_api_manager::SteamAPI_ISteamClient_GetISteamUser(steam_client_ptr, steam_user_ptr, steam_pipe_ptr, version);
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamUser(steam_client_ptr, hsteam_user_ptr, hsteam_pipe_ptr,
+                                                                  version);
 }
 
 extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamApps(void* steam_client_ptr,
-                                                                           void* steam_user_ptr,
-                                                                           void* steam_pipe_ptr,
+                                                                           void* hsteam_user_ptr,
+                                                                           void* hsteam_pipe_ptr,
                                                                            const char* version)
 {
-    return steam_api_manager::SteamAPI_ISteamClient_GetISteamApps(steam_client_ptr, steam_user_ptr, steam_pipe_ptr, version);
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamApps(steam_client_ptr, hsteam_user_ptr, hsteam_pipe_ptr,
+                                                                  version);
 }
 
 extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamFriends(void* steam_client_ptr,
-                                                                              void* steam_user_ptr,
-                                                                              void* steam_pipe_ptr,
+                                                                              void* hsteam_user_ptr,
+                                                                              void* hsteam_pipe_ptr,
                                                                               const char* version)
 {
     return steam_api_manager::SteamAPI_ISteamClient_GetISteamFriends(steam_client_ptr,
-                                                                     steam_user_ptr,
-                                                                     steam_pipe_ptr,
+                                                                     hsteam_user_ptr,
+                                                                     hsteam_pipe_ptr,
                                                                      version);
 }
 
 extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamUtils(void* steam_client_ptr,
-                                                                            void* steam_pipe_ptr,
+                                                                            void* hsteam_pipe_ptr,
                                                                             const char* version)
 {
-    return steam_api_manager::SteamAPI_ISteamClient_GetISteamUtils(steam_client_ptr, steam_pipe_ptr, version);
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamUtils(steam_client_ptr, hsteam_pipe_ptr, version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamMatchmaking(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamMatchmaking(steam_client_ptr,
+                                                                         hsteam_user_ptr,
+                                                                         hsteam_pipe_ptr,
+                                                                         version);
 }
 
 extern "C" __declspec(dllexport) void* SteamAPI_ISteamFriends_GetPersonaName(void* steam_friends_ptr)

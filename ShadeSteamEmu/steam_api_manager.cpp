@@ -71,11 +71,11 @@ void* steam_api_manager::SteamClient()
 }
 
 void* steam_api_manager::SteamAPI_ISteamClient_GetISteamUser(void* steam_client_ptr,
-                                                             void* steam_user_ptr,
-                                                             void* steam_pipe_ptr,
+                                                             void* hsteam_user_ptr,
+                                                             void* hsteam_pipe_ptr,
                                                              const char* version)
 {
-    return function_pointers::steam_user_ptr(steam_client_ptr, steam_user_ptr, steam_pipe_ptr, version);
+    return function_pointers::steam_user_ptr(steam_client_ptr, hsteam_user_ptr, hsteam_pipe_ptr, version);
 }
 
 void* steam_api_manager::SteamInternal_CreateInterface(const char* version)
@@ -84,26 +84,34 @@ void* steam_api_manager::SteamInternal_CreateInterface(const char* version)
 }
 
 void* steam_api_manager::SteamAPI_ISteamClient_GetISteamApps(void* steam_client_ptr,
-                                                             void* steam_user_ptr,
-                                                             void* steam_pipe_ptr,
+                                                             void* hsteam_user_ptr,
+                                                             void* hsteam_pipe_ptr,
                                                              const char* version)
 {
-    return function_pointers::steam_apps_ptr(steam_client_ptr, steam_user_ptr, steam_pipe_ptr, version);
+    return function_pointers::steam_apps_ptr(steam_client_ptr, hsteam_user_ptr, hsteam_pipe_ptr, version);
 }
 
 void* steam_api_manager::SteamAPI_ISteamClient_GetISteamFriends(void* steam_client_ptr,
-                                                                void* steam_user_ptr,
-                                                                void* steam_pipe_ptr,
+                                                                void* hsteam_user_ptr,
+                                                                void* hsteam_pipe_ptr,
                                                                 const char* version)
 {
-    return function_pointers::steam_friends_ptr(steam_client_ptr, steam_user_ptr, steam_pipe_ptr, version);
+    return function_pointers::steam_friends_ptr(steam_client_ptr, hsteam_user_ptr, hsteam_pipe_ptr, version);
 }
 
 void* steam_api_manager::SteamAPI_ISteamClient_GetISteamUtils(void* steam_client_ptr,
-                                                              void* steam_pipe_ptr,
+                                                              void* hsteam_pipe_ptr,
                                                               const char* version)
 {
-    return function_pointers::steam_utils_ptr(steam_client_ptr, steam_pipe_ptr, version);
+    return function_pointers::steam_utils_ptr(steam_client_ptr, hsteam_pipe_ptr, version);
+}
+
+void* steam_api_manager::SteamAPI_ISteamClient_GetISteamMatchmaking(void* steam_client_ptr,
+                                                                    void* hsteam_user_ptr,
+                                                                    void* hsteam_pipe_ptr,
+                                                                    const char* version)
+{
+    return function_pointers::steam_matchmaking_ptr(steam_client_ptr, hsteam_user_ptr, hsteam_pipe_ptr, version);
 }
 
 void* steam_api_manager::SteamAPI_ISteamFriends_GetPersonaName(void* steam_friends_ptr)

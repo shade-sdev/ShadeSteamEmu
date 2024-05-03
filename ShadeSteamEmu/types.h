@@ -7,23 +7,28 @@ typedef void* (*SteamAPI_GetHSteamUser_GetPtr)();
 
 typedef void* (*SteamClient_GetPtr)();
 typedef void* (*SteamAPI_ISteamClient_GetISteamUser_GetPtr)(void* steam_client_ptr,
-                                                            void* steam_user_ptr,
-                                                            void* steam_pipe_ptr,
+                                                            void* hsteam_user_ptr,
+                                                            void* hsteam_pipe_ptr,
                                                             const char* version);
 
 typedef void* (*SteamAPI_ISteamClient_GetISteamFriends_Ptr)(void* steam_client_ptr,
-                                                            void* steam_user_ptr,
-                                                            void* steam_pipe_ptr,
+                                                            void* hsteam_user_ptr,
+                                                            void* hsteam_pipe_ptr,
                                                             const char* version);
 
 typedef void* (*ISteamApps_GetPtr)(void* steam_client_ptr,
-                                   void* steam_user_ptr,
-                                   void* steam_pipe_ptr,
+                                   void* hsteam_user_ptr,
+                                   void* hsteam_pipe_ptr,
                                    const char* version);
 
 typedef void* (*ISteamUtils_GetPtr)(void* steam_client_ptr,
-                                    void* steam_pipe_ptr,
+                                    void* hsteam_pipe_ptr,
                                     const char* version);
+SteamAPI_ISteamClient_GetISteamMatchmaking
+typedef void* (*ISteamMatchMaking_GetPtr)(void* steam_client_ptr,
+                                          void* hsteam_user_ptr,
+                                          void* hsteam_pipe_ptr,
+                                          const char* version);
 
 typedef void* (*SteamAPI_ISteamFriends_GetPersonaName_Ptr)(void* instance_ptr);
 typedef void* (*SteamInternal_CreateInterface_GetPtr)(const char*);

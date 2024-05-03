@@ -47,25 +47,30 @@ public:
     static void* SteamClient();
 
     static void* SteamAPI_ISteamClient_GetISteamUser(void* steam_client_ptr,
-                                                     void* steam_user_ptr,
-                                                     void* steam_pipe_ptr,
+                                                     void* hsteam_user_ptr,
+                                                     void* hsteam_pipe_ptr,
                                                      const char* version);
 
     static void* SteamInternal_CreateInterface(const char* version);
 
     static void* SteamAPI_ISteamClient_GetISteamApps(void* steam_client_ptr,
-                                                     void* steam_user_ptr,
-                                                     void* steam_pipe_ptr,
+                                                     void* hsteam_user_ptr,
+                                                     void* hsteam_pipe_ptr,
                                                      const char* version);
 
     static void* SteamAPI_ISteamClient_GetISteamFriends(void* steam_client_ptr,
-                                                        void* steam_user_ptr,
-                                                        void* steam_pipe_ptr,
+                                                        void* hsteam_user_ptr,
+                                                        void* hsteam_pipe_ptr,
                                                         const char* version);
 
     static void* SteamAPI_ISteamClient_GetISteamUtils(void* steam_client_ptr,
-                                                      void* steam_pipe_ptr,
+                                                      void* hsteam_pipe_ptr,
                                                       const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamMatchmaking(void* steam_client_ptr,
+                                                            void* hsteam_user_ptr,
+                                                            void* hsteam_pipe_ptr,
+                                                            const char* version);
 
     static void* SteamAPI_ISteamFriends_GetPersonaName(void* steam_friends_ptr);
 

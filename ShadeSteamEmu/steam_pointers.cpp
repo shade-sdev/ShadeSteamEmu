@@ -13,6 +13,7 @@ SteamAPI_ISteamClient_GetISteamUser_GetPtr function_pointers::steam_user_ptr = n
 SteamAPI_ISteamClient_GetISteamFriends_Ptr function_pointers::steam_friends_ptr = nullptr;
 ISteamApps_GetPtr function_pointers::steam_apps_ptr = nullptr;
 ISteamUtils_GetPtr function_pointers::steam_utils_ptr = nullptr;
+ISteamMatchMaking_GetPtr function_pointers::steam_matchmaking_ptr = nullptr;
 
 SteamAPI_ISteamFriends_GetPersonaName_Ptr function_pointers::get_persona_name_ptr = nullptr;
 SteamInternal_CreateInterface_GetPtr function_pointers::create_interface_ptr = nullptr;
@@ -36,8 +37,9 @@ bool function_pointers::initialize_function_pointers()
     steam_friends_ptr = load_pointer<SteamAPI_ISteamClient_GetISteamFriends_Ptr>(
         steam_api_steamclient_isteamfriends);
     steam_apps_ptr = load_pointer<ISteamApps_GetPtr>(steam_api_steamclient_isteamapps);
-    steam_utils_ptr = load_pointer<ISteamUtils_GetPtr>(steam_api_steam_client_isteamutils);
-
+    steam_utils_ptr = load_pointer<ISteamUtils_GetPtr>(steam_api_steamclient_isteamutils);
+    steam_matchmaking_ptr = load_pointer<ISteamMatchMaking_GetPtr>(steam_api_steamclient_isteammatchmaking);
+    
     get_persona_name_ptr = load_pointer<SteamAPI_ISteamFriends_GetPersonaName_Ptr>(steam_api_isteamfriends_persona_name);
     create_interface_ptr = load_pointer<SteamInternal_CreateInterface_GetPtr>(steaminternal_create_interface);
     is_subscribed_app_ptr = load_pointer<SteamAPI_ISteamApps_BIsSubscribedApp_GetPtr>(steam_api_steamapps_bissubscribedapp);
