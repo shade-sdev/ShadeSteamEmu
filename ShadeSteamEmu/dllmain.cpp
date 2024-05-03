@@ -160,7 +160,7 @@ extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamScreenshot
 extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamGameSearch(
     void* steam_client_ptr,
     void* hsteam_user_ptr,
-    void* hsteam_pipe_ptr,SteamAPI_ISteamClient_GetISteamRemoteStorage
+    void* hsteam_pipe_ptr,
     const char* version)
 {
     return steam_api_manager::SteamAPI_ISteamClient_GetISteamGameSearch(
