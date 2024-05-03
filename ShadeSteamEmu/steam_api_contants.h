@@ -10,6 +10,7 @@ constexpr auto steam_api_steamclient_isteamfriends = "SteamAPI_ISteamClient_GetI
 constexpr auto steam_api_steamclient_isteamapps = "SteamAPI_ISteamClient_GetISteamApps";
 constexpr auto steam_api_steamclient_isteamutils = "SteamAPI_ISteamClient_GetISteamUtils";
 constexpr auto steam_api_steamclient_isteammatchmaking = "SteamAPI_ISteamClient_GetISteamMatchmaking";
+constexpr auto steam_api_steamclient_isteammatchmakingservers = "SteamAPI_ISteamClient_GetISteamMatchmakingServers";
 
 constexpr auto steam_api_isteamfriends_persona_name = "SteamAPI_ISteamFriends_GetPersonaName";
 constexpr auto steaminternal_create_interface = "SteamInternal_CreateInterface";

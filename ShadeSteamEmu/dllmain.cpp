@@ -92,6 +92,19 @@ extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamMatchmakin
                                                                          version);
 }
 
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamMatchmakingServers(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamMatchmakingServers(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
 extern "C" __declspec(dllexport) void* SteamAPI_ISteamFriends_GetPersonaName(void* steam_friends_ptr)
 {
     return steam_api_manager::SteamAPI_ISteamFriends_GetPersonaName(steam_friends_ptr);
