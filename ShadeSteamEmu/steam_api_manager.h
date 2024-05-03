@@ -77,6 +77,11 @@ public:
                                                                    void* hsteam_pipe_ptr,
                                                                    const char* version);
 
+    static void* SteamAPI_ISteamClient_GetISteamUserStats(void* steam_client_ptr,
+                                                          void* hsteam_user_ptr,
+                                                          void* hsteam_pipe_ptr,
+                                                          const char* version);
+
     static void* SteamAPI_ISteamFriends_GetPersonaName(void* steam_friends_ptr);
 
     static bool SteamAPI_ISteamApps_BIsSubscribedApp(void* steam_apps_ptr, uint32 app_id);

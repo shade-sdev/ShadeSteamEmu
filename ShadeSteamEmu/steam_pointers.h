@@ -20,6 +20,7 @@ public:
     static ISteamUtils_GetPtr steam_utils_ptr;
     static ISteamMatchMaking_GetPtr steam_matchmaking_ptr;
     static ISteamMatchMakingServers_GetPtr steam_match_making_servers_ptr;
+    static ISteamUserStats_GetPtr steam_user_stats_ptr;
     
     static SteamAPI_ISteamFriends_GetPersonaName_Ptr get_persona_name_ptr;
     static SteamInternal_CreateInterface_GetPtr create_interface_ptr;

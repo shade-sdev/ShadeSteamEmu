@@ -125,6 +125,17 @@ void* steam_api_manager::SteamAPI_ISteamClient_GetISteamMatchmakingServers(void*
                                                              version);
 }
 
+void* steam_api_manager::SteamAPI_ISteamClient_GetISteamUserStats(void* steam_client_ptr,
+                                                                  void* hsteam_user_ptr,
+                                                                  void* hsteam_pipe_ptr,
+                                                                  const char* version)
+{
+    return function_pointers::steam_user_stats_ptr(steam_client_ptr,
+                                                   hsteam_user_ptr,
+                                                   hsteam_pipe_ptr,
+                                                   version);
+}
+
 void* steam_api_manager::SteamAPI_ISteamFriends_GetPersonaName(void* steam_friends_ptr)
 {
     return function_pointers::get_persona_name_ptr(steam_friends_ptr);
