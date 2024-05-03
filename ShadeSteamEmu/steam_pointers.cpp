@@ -32,6 +32,7 @@ ISteamParentalSettings_GetPtr function_pointers::steam_parentalsettings_ptr = nu
 ISteamInput_GetPtr function_pointers::steam_input_ptr = nullptr;
 ISteamParties_GetPtr function_pointers::steam_parties_ptr = nullptr;
 ISteamRemotePlay_GetPtr function_pointers::steam_remoteplay_ptr = nullptr;
+ISteamAppList_GetPtr function_pointers::steam_app_list_ptr = nullptr;
 
 SteamAPI_ISteamFriends_GetPersonaName_Ptr function_pointers::get_persona_name_ptr = nullptr;
 SteamInternal_CreateInterface_GetPtr function_pointers::create_interface_ptr = nullptr;
@@ -77,6 +78,7 @@ bool function_pointers::initialize_function_pointers()
     steam_input_ptr = load_pointer<ISteamInput_GetPtr>(steam_api_steamclient_isteaminput);
     steam_parties_ptr = load_pointer<ISteamParties_GetPtr>(steam_api_steamclient_isteamparties);
     steam_remoteplay_ptr = load_pointer<ISteamRemotePlay_GetPtr>(steam_api_steamclient_isteamremoteplay);
+    steam_app_list_ptr = load_pointer<ISteamAppList_GetPtr>(steam_api_steamclient_isteamapplist);
 
     get_persona_name_ptr = load_pointer<
         SteamAPI_ISteamFriends_GetPersonaName_Ptr>(steam_api_isteamfriends_persona_name);

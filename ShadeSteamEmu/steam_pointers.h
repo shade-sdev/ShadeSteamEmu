@@ -37,6 +37,7 @@ public:
     static ISteamInput_GetPtr steam_input_ptr;
     static ISteamParties_GetPtr steam_parties_ptr;
     static ISteamRemotePlay_GetPtr steam_remoteplay_ptr;
+    static ISteamAppList_GetPtr steam_app_list_ptr;
     
     static SteamAPI_ISteamFriends_GetPersonaName_Ptr get_persona_name_ptr;
     static SteamInternal_CreateInterface_GetPtr create_interface_ptr;

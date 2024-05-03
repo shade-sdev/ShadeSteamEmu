@@ -28,6 +28,7 @@ constexpr auto steam_api_steamclient_isteamparentalsettings = "SteamAPI_ISteamCl
 constexpr auto steam_api_steamclient_isteaminput = "SteamAPI_ISteamClient_GetISteamInput";
 constexpr auto steam_api_steamclient_isteamparties = "SteamAPI_ISteamClient_GetISteamParties";
 constexpr auto steam_api_steamclient_isteamremoteplay = "SteamAPI_ISteamClient_GetISteamRemotePlay";
+constexpr auto steam_api_steamclient_isteamapplist = "SteamAPI_ISteamClient_GetISteamAppList";
 
 constexpr auto steam_api_isteamfriends_persona_name = "SteamAPI_ISteamFriends_GetPersonaName";
 constexpr auto steaminternal_create_interface = "SteamInternal_CreateInterface";
