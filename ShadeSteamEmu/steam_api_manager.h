@@ -102,6 +102,66 @@ public:
                                                            void* hsteam_pipe_ptr,
                                                            const char* version);
 
+    static void* SteamAPI_ISteamClient_GetISteamHTTP(void* steam_client_ptr,
+                                                     void* hsteam_user_ptr,
+                                                     void* hsteam_pipe_ptr,
+                                                     const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamController(void* steam_client_ptr,
+                                                           void* hsteam_user_ptr,
+                                                           void* hsteam_pipe_ptr,
+                                                           const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamUGC(void* steam_client_ptr,
+                                                    void* hsteam_user_ptr,
+                                                    void* hsteam_pipe_ptr,
+                                                    const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamMusic(void* steam_client_ptr,
+                                                      void* hsteam_user_ptr,
+                                                      void* hsteam_pipe_ptr,
+                                                      const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamMusicRemote(void* steam_client_ptr,
+                                                            void* hsteam_user_ptr,
+                                                            void* hsteam_pipe_ptr,
+                                                            const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamHTMLSurface(void* steam_client_ptr,
+                                                            void* hsteam_user_ptr,
+                                                            void* hsteam_pipe_ptr,
+                                                            const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamInventory(void* steam_client_ptr,
+                                                          void* hsteam_user_ptr,
+                                                          void* hsteam_pipe_ptr,
+                                                          const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamVideo(void* steam_client_ptr,
+                                                      void* hsteam_user_ptr,
+                                                      void* hsteam_pipe_ptr,
+                                                      const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamParentalSettings(void* steam_client_ptr,
+                                                                 void* hsteam_user_ptr,
+                                                                 void* hsteam_pipe_ptr,
+                                                                 const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamInput(void* steam_client_ptr,
+                                                      void* hsteam_user_ptr,
+                                                      void* hsteam_pipe_ptr,
+                                                      const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamParties(void* steam_client_ptr,
+                                                        void* hsteam_user_ptr,
+                                                        void* hsteam_pipe_ptr,
+                                                        const char* version);
+
+    static void* SteamAPI_ISteamClient_GetISteamRemotePlay(void* steam_client_ptr,
+                                                           void* hsteam_user_ptr,
+                                                           void* hsteam_pipe_ptr,
+                                                           const char* version);
+    
     static void* SteamAPI_ISteamFriends_GetPersonaName(void* steam_friends_ptr);
 
     static bool SteamAPI_ISteamApps_BIsSubscribedApp(void* steam_apps_ptr, uint32 app_id);

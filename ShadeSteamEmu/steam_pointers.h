@@ -25,6 +25,18 @@ public:
     static ISteamRemoteStorage_GetPtr steam_remote_storage_ptr;
     static ISteamScreenShots_GetPtr steam_screen_shots_ptr;
     static ISteamGameSearch_GetPtr steam_game_search_ptr;
+    static ISteamHTTP_GetPtr steam_http_ptr;
+    static ISteamController_GetPtr steam_controller_ptr;
+    static ISteamUGC_GetPtr steam_ugc_ptr;
+    static ISteamMusic_GetPtr steam_music_ptr;
+    static ISteamMusicRemote_GetPtr steam_music_remote_ptr;
+    static ISteamHTMLSurface_GetPtr steam_htmlsurface_ptr;
+    static ISteamInventory_GetPtr steam_inventory_ptr;
+    static ISteamVideo_GetPtr steam_video_ptr;
+    static ISteamParentalSettings_GetPtr steam_parentalsettings_ptr;
+    static ISteamInput_GetPtr steam_input_ptr;
+    static ISteamParties_GetPtr steam_parties_ptr;
+    static ISteamRemotePlay_GetPtr steam_remoteplay_ptr;
     
     static SteamAPI_ISteamFriends_GetPersonaName_Ptr get_persona_name_ptr;
     static SteamInternal_CreateInterface_GetPtr create_interface_ptr;

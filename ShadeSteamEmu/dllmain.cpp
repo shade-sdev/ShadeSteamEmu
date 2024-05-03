@@ -170,6 +170,162 @@ extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamGameSearch
         version);
 }
 
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamHTTP(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamHTTP(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamController(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamController(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamUGC(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamUGC(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamMusic(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamMusic(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamMusicRemote(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamMusicRemote(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamHTMLSurface(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamHTMLSurface(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamInventory(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamInventory(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamVideo(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamVideo(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamParentalSettings(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamParentalSettings(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamInput(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamInput(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamParties(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamParties(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
+extern "C" __declspec(dllexport) void* SteamAPI_ISteamClient_GetISteamRemotePlay(
+    void* steam_client_ptr,
+    void* hsteam_user_ptr,
+    void* hsteam_pipe_ptr,
+    const char* version)
+{
+    return steam_api_manager::SteamAPI_ISteamClient_GetISteamRemotePlay(
+        steam_client_ptr,
+        hsteam_user_ptr,
+        hsteam_pipe_ptr,
+        version);
+}
+
 extern "C" __declspec(dllexport) void* SteamAPI_ISteamFriends_GetPersonaName(void* steam_friends_ptr)
 {
     return steam_api_manager::SteamAPI_ISteamFriends_GetPersonaName(steam_friends_ptr);
