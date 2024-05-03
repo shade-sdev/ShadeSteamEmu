@@ -12,6 +12,10 @@ constexpr auto steam_api_steamclient_isteamutils = "SteamAPI_ISteamClient_GetISt
 constexpr auto steam_api_steamclient_isteammatchmaking = "SteamAPI_ISteamClient_GetISteamMatchmaking";
 constexpr auto steam_api_steamclient_isteammatchmakingservers = "SteamAPI_ISteamClient_GetISteamMatchmakingServers";
 constexpr auto steam_api_steamclient_isteamuserstats = "SteamAPI_ISteamClient_GetISteamUserStats";
+constexpr auto steam_api_steamclient_isteamnetworking = "SteamAPI_ISteamClient_GetISteamNetworking";
+constexpr auto steam_api_steamclient_isteamremotestorage = "SteamAPI_ISteamClient_GetISteamRemoteStorage";
+constexpr auto steam_api_steamclient_isteamscreenshots = "SteamAPI_ISteamClient_GetISteamScreenshots";
+constexpr auto steam_api_steamclient_isteamgamesearch = "SteamAPI_ISteamClient_GetISteamGameSearch";
 
 constexpr auto steam_api_isteamfriends_persona_name = "SteamAPI_ISteamFriends_GetPersonaName";
 constexpr auto steaminternal_create_interface = "SteamInternal_CreateInterface";

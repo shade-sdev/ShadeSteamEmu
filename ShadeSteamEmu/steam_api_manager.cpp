@@ -136,6 +136,50 @@ void* steam_api_manager::SteamAPI_ISteamClient_GetISteamUserStats(void* steam_cl
                                                    version);
 }
 
+void* steam_api_manager::SteamAPI_ISteamClient_GetISteamNetworking(void* steam_client_ptr,
+                                                                   void* hsteam_user_ptr,
+                                                                   void* hsteam_pipe_ptr,
+                                                                   const char* version)
+{
+    return function_pointers::steam_networking_ptr(steam_client_ptr,
+                                                   hsteam_user_ptr,
+                                                   hsteam_pipe_ptr,
+                                                   version);
+}
+
+void* steam_api_manager::SteamAPI_ISteamClient_GetISteamRemoteStorage(void* steam_client_ptr,
+                                                                      void* hsteam_user_ptr,
+                                                                      void* hsteam_pipe_ptr,
+                                                                      const char* version)
+{
+    return function_pointers::steam_remote_storage_ptr(steam_client_ptr,
+                                                       hsteam_user_ptr,
+                                                       hsteam_pipe_ptr,
+                                                       version);
+}
+
+void* steam_api_manager::SteamAPI_ISteamClient_GetISteamScreenshots(void* steam_client_ptr,
+                                                                    void* hsteam_user_ptr,
+                                                                    void* hsteam_pipe_ptr,
+                                                                    const char* version)
+{
+    return function_pointers::steam_screen_shots_ptr(steam_client_ptr,
+                                                     hsteam_user_ptr,
+                                                     hsteam_pipe_ptr,
+                                                     version);
+}
+
+void* steam_api_manager::SteamAPI_ISteamClient_GetISteamGameSearch(void* steam_client_ptr,
+                                                                   void* hsteam_user_ptr,
+                                                                   void* hsteam_pipe_ptr,
+                                                                   const char* version)
+{
+    return function_pointers::steam_game_search_ptr(steam_client_ptr,
+                                                    hsteam_user_ptr,
+                                                    hsteam_pipe_ptr,
+                                                    version);
+}
+
 void* steam_api_manager::SteamAPI_ISteamFriends_GetPersonaName(void* steam_friends_ptr)
 {
     return function_pointers::get_persona_name_ptr(steam_friends_ptr);

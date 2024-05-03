@@ -16,6 +16,10 @@ ISteamUtils_GetPtr function_pointers::steam_utils_ptr = nullptr;
 ISteamMatchMaking_GetPtr function_pointers::steam_matchmaking_ptr = nullptr;
 ISteamMatchMakingServers_GetPtr function_pointers::steam_match_making_servers_ptr = nullptr;
 ISteamUserStats_GetPtr function_pointers::steam_user_stats_ptr = nullptr;
+ISteamNetworking_GetPtr function_pointers::steam_networking_ptr = nullptr;
+ISteamRemoteStorage_GetPtr function_pointers::steam_remote_storage_ptr = nullptr;
+ISteamScreenShots_GetPtr function_pointers::steam_screen_shots_ptr = nullptr;
+ISteamGameSearch_GetPtr function_pointers::steam_game_search_ptr = nullptr;
 
 SteamAPI_ISteamFriends_GetPersonaName_Ptr function_pointers::get_persona_name_ptr = nullptr;
 SteamInternal_CreateInterface_GetPtr function_pointers::create_interface_ptr = nullptr;
@@ -43,7 +47,11 @@ bool function_pointers::initialize_function_pointers()
     steam_matchmaking_ptr = load_pointer<ISteamMatchMaking_GetPtr>(steam_api_steamclient_isteammatchmaking);
     steam_match_making_servers_ptr = load_pointer<ISteamMatchMakingServers_GetPtr>(steam_api_steamclient_isteammatchmakingservers);
     steam_user_stats_ptr = load_pointer<ISteamUserStats_GetPtr>(steam_api_steamclient_isteamuserstats);
-    
+    steam_networking_ptr = load_pointer<ISteamNetworking_GetPtr>(steam_api_steamclient_isteamnetworking);
+    steam_remote_storage_ptr = load_pointer<ISteamRemoteStorage_GetPtr>(steam_api_steamclient_isteamremotestorage);
+    steam_screen_shots_ptr = load_pointer<ISteamScreenShots_GetPtr>(steam_api_steamclient_isteamscreenshots);
+    steam_game_search_ptr = load_pointer<ISteamGameSearch_GetPtr>(steam_api_steamclient_isteamgamesearch);
+
     get_persona_name_ptr = load_pointer<SteamAPI_ISteamFriends_GetPersonaName_Ptr>(steam_api_isteamfriends_persona_name);
     create_interface_ptr = load_pointer<SteamInternal_CreateInterface_GetPtr>(steaminternal_create_interface);
     is_subscribed_app_ptr = load_pointer<SteamAPI_ISteamApps_BIsSubscribedApp_GetPtr>(steam_api_steamapps_bissubscribedapp);

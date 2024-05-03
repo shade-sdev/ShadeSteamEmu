@@ -40,6 +40,26 @@ typedef void* (*ISteamUserStats_GetPtr)(void* steam_client_ptr,
                                         void* hsteam_pipe_ptr,
                                         const char* version);
 
+typedef void* (*ISteamNetworking_GetPtr)(void* steam_client_ptr,
+                                        void* hsteam_user_ptr,
+                                        void* hsteam_pipe_ptr,
+                                        const char* version);
+
+typedef void* (*ISteamRemoteStorage_GetPtr)(void* steam_client_ptr,
+                                        void* hsteam_user_ptr,
+                                        void* hsteam_pipe_ptr,
+                                        const char* version);
+
+typedef void* (*ISteamScreenShots_GetPtr)(void* steam_client_ptr,
+                                        void* hsteam_user_ptr,
+                                        void* hsteam_pipe_ptr,
+                                        const char* version);
+
+typedef void* (*ISteamGameSearch_GetPtr)(void* steam_client_ptr,
+                                        void* hsteam_user_ptr,
+                                        void* hsteam_pipe_ptr,
+                                        const char* version);
+
 typedef void* (*SteamAPI_ISteamFriends_GetPersonaName_Ptr)(void* instance_ptr);
 typedef void* (*SteamInternal_CreateInterface_GetPtr)(const char*);
 typedef bool (*SteamAPI_ISteamApps_BIsSubscribedApp_GetPtr)(void* steam_apps_ptr, AppId_t app_id);
