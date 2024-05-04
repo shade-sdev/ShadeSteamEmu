@@ -75,6 +75,13 @@ SteamAPI_ISteam_CreateLobby_Ptr function_pointers::steam_api_i_steam_create_lobb
 SteamAPI_ISteam_GetFriendPersonaState_Ptr function_pointers::steam_api_i_steam_get_friend_persona_state_ptr = nullptr;
 SteamAPI_ISteam_InviteUserToLobby_Ptr function_pointers::steam_api_i_steam_invite_user_to_lobby_ptr = nullptr;
 SteamAPI_ISteam_LeaveLobby_Ptr function_pointers::steam_api_i_steam_leave_lobby_ptr = nullptr;
+SteamAPI_RegisterCallResult_Ptr function_pointers::steam_api_register_call_result_ptr = nullptr;
+SteamAPI_UnregisterCallResult_Ptr function_pointers::steam_api_unregister_call_result_ptr = nullptr;
+SteamAPI_UnregisterCallback_Ptr function_pointers::steam_api_unregister_callback_ptr = nullptr;
+SteamAPI_RunCallbacks_Ptr function_pointers::steam_api_run_callbacks_ptr = nullptr;
+SteamInternal_FindOrCreateGameServerInterface_Ptr function_pointers::find_or_create_game_server_interface_ptr = nullptr;
+SteamAPI_RegisterCallback_Ptr function_pointers::register_callback_ptr = nullptr;
+SteamInternal_ContextInit_Ptr function_pointers::context_init_ptr = nullptr;
 
 bool function_pointers::initialize_function_pointers()
 {
@@ -178,9 +185,20 @@ bool function_pointers::initialize_function_pointers()
         steam_friends_get_friend_persona_state);
     steam_api_i_steam_invite_user_to_lobby_ptr = load_pointer<SteamAPI_ISteam_InviteUserToLobby_Ptr>(
         steam_matchmaking_invite_user_to_lobby);
-    steam_api_i_steam_leave_lobby_ptr  = load_pointer<SteamAPI_ISteam_LeaveLobby_Ptr >(
-        steam_matchmaking_leave_lobby );
-    
+    steam_api_i_steam_leave_lobby_ptr = load_pointer<SteamAPI_ISteam_LeaveLobby_Ptr>(
+        steam_matchmaking_leave_lobby);
+    steam_api_register_call_result_ptr = load_pointer<SteamAPI_RegisterCallResult_Ptr>(
+        steam_register_call_result);
+    steam_api_unregister_call_result_ptr = load_pointer<SteamAPI_UnregisterCallResult_Ptr >(
+        steam_unregister_call_result );
+    steam_api_unregister_callback_ptr = load_pointer<SteamAPI_UnregisterCallback_Ptr >(
+    steam_unregister_callback  );
+    steam_api_run_callbacks_ptr = load_pointer<SteamAPI_RunCallbacks_Ptr >(
+    steam_run_callbacks   );
+    find_or_create_game_server_interface_ptr = load_pointer<SteamInternal_FindOrCreateGameServerInterface_Ptr>(steaminternal_find_or_create_game_server_interface);
+    register_callback_ptr = load_pointer<SteamAPI_RegisterCallback_Ptr>(steamapi_register_callback);
+    context_init_ptr = load_pointer<SteamInternal_ContextInit_Ptr>(steaminternal_context_init);
+
     return hsteam_pipe_ptr && hsteam_user_ptr && steam_client_ptr &&
         steam_user_ptr && steam_friends_ptr && get_persona_name_ptr &&
         create_interface_ptr && steam_apps_ptr && is_subscribed_app_ptr && blogged_ptr

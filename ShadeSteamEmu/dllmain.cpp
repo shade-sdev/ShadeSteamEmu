@@ -9,6 +9,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     {
     case DLL_PROCESS_ATTACH:
         steam_api_manager = new class steam_api_manager;
+        steam_api_manager::SteamAPI_Init();
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
@@ -527,4 +528,39 @@ extern "C" __declspec(dllexport) bool SteamAPI_ISteamMatchmaking_InviteUserToLob
 extern "C" __declspec(dllexport) void SteamAPI_ISteamMatchmaking_LeaveLobby(void* instance_ptr, uint64_t steamid_lobby)
 {
     steam_api_manager::SteamAPI_ISteamMatchmaking_LeaveLobby(instance_ptr, steamid_lobby);
+}
+
+extern "C" __declspec(dllexport) void SteamAPI_RegisterCallResult(CCallbackBase* pCallback, uint64_t api_call)
+{
+    steam_api_manager::SteamAPI_RegisterCallResult(pCallback, api_call);
+}
+
+extern "C" __declspec(dllexport) void SteamAPI_UnregisterCallResult(CCallbackBase* pCallback, uint64_t api_call)
+{
+    steam_api_manager::SteamAPI_UnregisterCallResult(pCallback, api_call);
+}
+
+extern "C" __declspec(dllexport) void SteamAPI_UnregisterCallback(CCallbackBase* pCallback)
+{
+    steam_api_manager::SteamAPI_UnregisterCallback(pCallback);
+}
+
+extern "C" __declspec(dllexport) void SteamAPI_RunCallbacks()
+{
+    steam_api_manager::SteamAPI_RunCallbacks();
+}
+
+extern "C" __declspec(dllexport) void SteamInternal_FindOrCreateGameServerInterface(void* h_steam_user, const char* version)
+{
+    return steam_api_manager::SteamInternal_FindOrCreateGameServerInterface(h_steam_user, version);
+}
+
+extern "C" __declspec(dllexport) void SteamAPI_RegisterCallback(CCallbackBase* p_callback, int i_callback)
+{
+    return steam_api_manager::SteamAPI_RegisterCallback(p_callback, i_callback);
+}
+
+extern "C" __declspec(dllexport) void SteamInternal_ContextInit(void* p_context_init_data)
+{
+    return steam_api_manager::SteamInternal_ContextInit(p_context_init_data);
 }

@@ -237,4 +237,19 @@ public:
 
     static void SteamAPI_ISteamMatchmaking_LeaveLobby(void* instance_ptr, uint64_t steamid_lobby);
 
+    static void SteamAPI_RegisterCallResult(CCallbackBase* pCallback, uint64_t api_call);
+
+    static void SteamAPI_UnregisterCallResult(CCallbackBase* pCallback, uint64_t api_call);
+
+    static void SteamAPI_UnregisterCallback(CCallbackBase* pCallback);
+
+    static void SteamAPI_RunCallbacks();
+
+    static void SteamInternal_FindOrCreateGameServerInterface(void* h_steam_user, const char* version);
+
+    static void SteamAPI_RegisterCallback(CCallbackBase* p_callback, int i_callback);
+
+    static void SteamInternal_ContextInit(void* p_context_init_data);
+
+
 };

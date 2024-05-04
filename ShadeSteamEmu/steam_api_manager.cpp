@@ -128,29 +128,11 @@ uint32_t steam_api_manager::SteamAPI_ISteamUser_GetAuthSessionTicket(void* steam
                                                                      uint32_t* pcb_ticket,
                                                                      void* steam_network_identity)
 {
-    static const uint32_t max_ticket_size = 1024;
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<uint32_t> dis_size(128, max_ticket_size);
-
-    uint32_t ticket_size = dis_size(gen);
-    if (cb_max_ticket >= static_cast<int>(ticket_size))
-    {
-        std::uniform_int_distribution<uint32_t> dis_byte(0, 255);
-        uint8_t* ticket_data = reinterpret_cast<uint8_t*>(p_ticket);
-        for (uint32_t i = 0; i < ticket_size; ++i)
-        {
-            ticket_data[i] = static_cast<uint8_t>(dis_byte(gen));
-        }
-
-        *pcb_ticket = ticket_size;
-        return ticket_size;
-    }
-    else
-    {
-        *pcb_ticket = 0;
-        return 0;
-    }
+    return function_pointers::steam_api_user_get_auth_session_ticket_ptr(steam_user,
+                                                                       p_ticket,
+                                                                       cb_max_ticket,
+                                                                       pcb_ticket,
+                                                                       steam_network_identity);
 }
 
 void* steam_api_manager::SteamAPI_ISteamClient_GetISteamApps(void* steam_client_ptr,
@@ -502,4 +484,39 @@ bool steam_api_manager::SteamAPI_ISteamMatchmaking_InviteUserToLobby(void* insta
 void steam_api_manager::SteamAPI_ISteamMatchmaking_LeaveLobby(void* instance_ptr, uint64_t steamid_lobby)
 {
     function_pointers::steam_api_i_steam_leave_lobby_ptr(instance_ptr, steamid_lobby);
+}
+
+void steam_api_manager::SteamAPI_RegisterCallResult(CCallbackBase* pCallback, uint64_t api_call)
+{
+    function_pointers::steam_api_register_call_result_ptr(pCallback, api_call);
+}
+
+void steam_api_manager::SteamAPI_UnregisterCallResult(CCallbackBase* pCallback, uint64_t api_call)
+{
+    function_pointers::steam_api_unregister_call_result_ptr(pCallback, api_call);
+}
+
+void steam_api_manager::SteamAPI_UnregisterCallback(CCallbackBase* pCallback)
+{
+    function_pointers::steam_api_unregister_callback_ptr(pCallback);
+}
+
+void steam_api_manager::SteamAPI_RunCallbacks()
+{
+    function_pointers::steam_api_run_callbacks_ptr();
+}
+
+void steam_api_manager::SteamInternal_FindOrCreateGameServerInterface(void* h_steam_user, const char* version)
+{
+    return function_pointers::find_or_create_game_server_interface_ptr(h_steam_user, version);
+}
+
+void steam_api_manager::SteamAPI_RegisterCallback(CCallbackBase* p_callback, int i_callback)
+{
+    return function_pointers::register_callback_ptr(p_callback, i_callback);
+}
+
+void steam_api_manager::SteamInternal_ContextInit(void* p_context_init_data)
+{
+    return function_pointers::context_init_ptr(p_context_init_data);
 }

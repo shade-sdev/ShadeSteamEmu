@@ -76,6 +76,13 @@ public:
     static SteamAPI_ISteam_GetFriendPersonaState_Ptr steam_api_i_steam_get_friend_persona_state_ptr;
     static SteamAPI_ISteam_InviteUserToLobby_Ptr steam_api_i_steam_invite_user_to_lobby_ptr;
     static SteamAPI_ISteam_LeaveLobby_Ptr steam_api_i_steam_leave_lobby_ptr;
+    static SteamAPI_RegisterCallResult_Ptr steam_api_register_call_result_ptr;
+    static SteamAPI_UnregisterCallResult_Ptr steam_api_unregister_call_result_ptr;
+    static SteamAPI_UnregisterCallback_Ptr steam_api_unregister_callback_ptr;
+    static SteamAPI_RunCallbacks_Ptr steam_api_run_callbacks_ptr;
+    static SteamInternal_FindOrCreateGameServerInterface_Ptr find_or_create_game_server_interface_ptr;
+    static SteamAPI_RegisterCallback_Ptr register_callback_ptr;
+    static SteamInternal_ContextInit_Ptr context_init_ptr;
 
     static bool initialize_function_pointers();
     template <typename FuncPtrType>
