@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 #include "steam/steam_api_common.h"
 typedef bool (*SteamAPI_Init_GetPtr)();
 typedef void* (*SteamAPI_GetHSteamPipe_GetPtr)();
@@ -125,8 +127,30 @@ typedef void* (*ISteamAppList_GetPtr)(void* steam_client_ptr,
                                       void* hsteam_pipe_ptr,
                                       const char* version);
 
-
+typedef void (*SteamAPI_Shutdown_Ptr)();
+typedef uint32 (*SteamAPI_ISteamUser_GetAuthSessionTicket_Ptr)(void* steam_user, void* p_ticket, int cb_max_ticket, uint32* pcb_ticket, void* steam_network_identity);
+typedef bool (*SteamAPI_SteamNetworkingIdentity_SetGenericString_Ptr)(void* steam_network_identity, const char* psz_string);
+typedef bool (*SteamAPI_IsSteamRunning_Ptr)();
+typedef bool (*SteamAPI_Input_Init_Ptr)(void* steam_input_ptr, bool b_explicitly_call_run_frame);
+typedef void (*SteamAPI_EnableDeviceCallbacks_Ptr)(void* steam_input_ptr);
+typedef void (*SteamAPI_ManualDispatch_Init_Ptr)();
+typedef void* (*SteamInternal_FindOrCreateUserInterface_Ptr)(void* hsteam_user_ptr, const char* psz_version);
 typedef void* (*SteamAPI_ISteamFriends_GetPersonaName_Ptr)(void* instance_ptr);
 typedef void* (*SteamInternal_CreateInterface_GetPtr)(const char*);
 typedef bool (*SteamAPI_ISteamApps_BIsSubscribedApp_GetPtr)(void* steam_apps_ptr, AppId_t app_id);
 typedef bool (*SteamAPI_ISteamUser_BLoggedOn_GetPtr)(void* steam_user_ptr);
+typedef bool (*SteamAPI_ISteamUserStats_SetStatInt32_Ptr)(void* steam_user_stats, const char* pch_name, int32_t ndata);
+typedef uint64_t (*SteamAPI_ISteamUser_GetSteamID_Ptr)(void* steam_user);
+typedef uint64_t (*SteamAPI_ISteamUserStats_RequestUserStats_Ptr)(void* steam_user_stats, uint64_t steamid_user);
+typedef bool (*SteamAPI_ISteamApps_BIsDlcInstalled_Ptr)(void* steam_apps, uint32_t app_id);
+typedef void (*SteamAPI_ManualDispatch_RunFrame_Ptr)(void* hsteampipe);
+typedef bool (*SteamAPI_ManualDispatch_GetNextCallback_Ptr)(void* hsteampipe, void* p_callback_msg);
+typedef void (*SteamAPI_ManualDispatch_FreeLastCallback_Ptr)(void* hsteampipe);
+typedef bool (*SteamAPI_ISteamRemoteStorage_FileExists_Ptr)(void* steam_remote_storage, const char* pch_file);
+typedef int (*SteamAPI_ISteamInput_GetConnectedControllers_Ptr)(void* steam_input, uint64_t* handles_out);
+typedef void (*SteamAPI_ISteamInput_RunFrame_Ptr)(void* steam_input, bool b_reserved_value);
+typedef bool (*SteamAPI_ISteamUserStats_GetStatFloat_Ptr)(void* steam_user_stats, const char* pch_name, float* pdata);
+typedef bool (*SteamAPI_ISteamUserStats_GetStatInt32_Ptr)(void* steam_user_stats, const char* pch_name, int32_t* pdata);
+typedef void (*SteamAPI_ISteamInput_TriggerVibration_Ptr)(void* steam_input, uint64_t input_handle, unsigned short usleftspeed, unsigned short usrightspeed);
+typedef bool (*SteamAPI_ISteamUserStats_StoreStats_Ptr)(void* steam_user_stats);
+typedef uint64_t (*SteamAPI_ISteamUserStats_FindOrCreateLeaderboard_Ptr)(void* steam_user_stats, const char* pch_leaderboard_name, void* eLeaderboardSortMethod, void* eLeaderboardDisplayType);

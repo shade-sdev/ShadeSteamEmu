@@ -1,6 +1,8 @@
 #include "steam_api_manager.h"
 
 #include <iostream>
+#include <random>
+
 #include "MinHook.h"
 #include "steam_pointers.h"
 
@@ -12,7 +14,11 @@ const void* steam_api_manager::hooked_get_persona_name(void* instance_ptr)
 steam_api_manager::steam_api_manager()
 {
     logfile_.open("steam_api_log.txt", std::ios_base::app);
-    function_pointers::initialize_function_pointers();
+    logfile_ << "Initializing steam api" << '\n';
+    if (!function_pointers::initialize_function_pointers())
+    {
+        logfile_ << "Failed to initialize all pointers" << '\n';
+    }
 }
 
 steam_api_manager::~steam_api_manager()
@@ -81,6 +87,69 @@ void* steam_api_manager::SteamAPI_ISteamClient_GetISteamUser(void* steam_client_
 void* steam_api_manager::SteamInternal_CreateInterface(const char* version)
 {
     return function_pointers::create_interface_ptr(version);
+}
+
+void* steam_api_manager::SteamInternal_FindOrCreateUserInterface(void* hsteam_user_ptr, const char* psz_version)
+{
+    return function_pointers::steam_internal_findorcreateuserinterface_ptr(hsteam_user_ptr, psz_version);
+}
+
+void steam_api_manager::SteamAPI_ManualDispatch_Init()
+{
+    return function_pointers::steam_api_manualdispatch_init_ptr();
+}
+
+void steam_api_manager::SteamAPI_ISteamInput_EnableDeviceCallbacks(void* steam_input_ptr)
+{
+    return function_pointers::steam_api_enable_device_callbacks_ptr(steam_input_ptr);
+}
+
+bool steam_api_manager::SteamAPI_ISteamInput_Init(void* steam_input_ptr, bool b_explicitly_call_run_frame)
+{
+    return function_pointers::steam_api_input_init_ptr(steam_input_ptr, b_explicitly_call_run_frame);
+}
+
+bool steam_api_manager::SteamAPI_IsSteamRunning()
+{
+    return function_pointers::steam_api_is_steam_running_ptr();
+}
+
+bool steam_api_manager::SteamAPI_SteamNetworkingIdentity_SetGenericString(void* steam_network_identity,
+                                                                          const char* psz_string)
+{
+    return function_pointers::steam_api_steam_networking_identity_set_generic_string_ptr(
+        steam_network_identity, psz_string);
+}
+
+uint32_t steam_api_manager::SteamAPI_ISteamUser_GetAuthSessionTicket(void* steam_user,
+                                                                     void* p_ticket,
+                                                                     int cb_max_ticket,
+                                                                     uint32_t* pcb_ticket,
+                                                                     void* steam_network_identity)
+{
+    static const uint32_t max_ticket_size = 1024;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<uint32_t> dis_size(128, max_ticket_size);
+
+    uint32_t ticket_size = dis_size(gen);
+    if (cb_max_ticket >= static_cast<int>(ticket_size))
+    {
+        std::uniform_int_distribution<uint32_t> dis_byte(0, 255);
+        uint8_t* ticket_data = reinterpret_cast<uint8_t*>(p_ticket);
+        for (uint32_t i = 0; i < ticket_size; ++i)
+        {
+            ticket_data[i] = static_cast<uint8_t>(dis_byte(gen));
+        }
+
+        *pcb_ticket = ticket_size;
+        return ticket_size;
+    }
+    else
+    {
+        *pcb_ticket = 0;
+        return 0;
+    }
 }
 
 void* steam_api_manager::SteamAPI_ISteamClient_GetISteamApps(void* steam_client_ptr,
@@ -297,4 +366,84 @@ bool steam_api_manager::SteamAPI_ISteamApps_BIsSubscribedApp(void* steam_apps_pt
 bool steam_api_manager::SteamAPI_ISteamUser_BLoggedOn(void* steam_user_ptr)
 {
     return function_pointers::blogged_ptr(steam_user_ptr);
+}
+
+void steam_api_manager::SteamAPI_Shutdown()
+{
+    function_pointers::steam_api_shutdown_ptr();
+}
+
+bool steam_api_manager::SteamAPI_ISteamUserStats_SetStatInt32(void* steam_user_stats, const char* pch_name, int32_t ndata)
+{
+    return function_pointers::steam_api_user_stats_set_stat_int32_ptr(steam_user_stats, pch_name, ndata);
+}
+
+uint64_t steam_api_manager::SteamAPI_ISteamUser_GetSteamID(void* steam_user)
+{
+    return function_pointers::steam_api_user_get_steam_id_ptr(steam_user);
+}
+
+uint64_t steam_api_manager::SteamAPI_ISteamUserStats_RequestUserStats(void* steam_user_stats, uint64_t steamid_user)
+{
+    return function_pointers::steam_api_user_stats_request_user_stats_ptr(steam_user_stats, steamid_user);
+}
+
+bool steam_api_manager::SteamAPI_ISteamApps_BIsDlcInstalled(void* steam_apps, uint32_t app_id)
+{
+    return function_pointers::steam_api_apps_b_is_dlc_installed_ptr(steam_apps, app_id);
+}
+
+void steam_api_manager::SteamAPI_ManualDispatch_RunFrame(void* hsteampipe)
+{
+    function_pointers::steam_api_manual_dispatch_run_frame_ptr(hsteampipe);
+}
+
+bool steam_api_manager::SteamAPI_ManualDispatch_GetNextCallback(void* hsteampipe, void* p_callback_msg)
+{
+    return function_pointers::steam_api_manual_dispatch_get_next_callback_ptr(hsteampipe, p_callback_msg);
+}
+
+void steam_api_manager::SteamAPI_ManualDispatch_FreeLastCallback(void* hsteampipe)
+{
+    function_pointers::steam_api_manual_dispatch_free_last_callback_ptr(hsteampipe);
+}
+
+bool steam_api_manager::SteamAPI_ISteamRemoteStorage_FileExists(void* steam_remote_storage, const char* pch_file)
+{
+    return function_pointers::steam_api_remote_storage_file_exists_ptr(steam_remote_storage, pch_file);
+}
+
+int steam_api_manager::SteamAPI_ISteamInput_GetConnectedControllers(void* steam_input, uint64_t* handles_out)
+{
+    return function_pointers::steam_api_input_get_connected_controllers_ptr(steam_input, handles_out);
+}
+
+void steam_api_manager::SteamAPI_ISteamInput_RunFrame(void* steam_input, bool b_reserved_value)
+{
+    return function_pointers::steam_api_input_run_frame_ptr(steam_input, b_reserved_value);
+}
+
+bool steam_api_manager::SteamAPI_ISteamUserStats_GetStatFloat(void* steam_user_stats, const char* pch_name, float* pdata)
+{
+    return function_pointers::steam_api_user_stats_get_stat_float_ptr(steam_user_stats, pch_name, pdata);
+}
+
+bool steam_api_manager::SteamAPI_ISteamUserStats_GetStatInt32(void* steam_user_stats, const char* pch_name, int32_t* pdata)
+{
+    return function_pointers::steam_api_user_stats_get_stat_int32_ptr(steam_user_stats, pch_name, pdata);
+}
+
+void steam_api_manager::SteamAPI_ISteamInput_TriggerVibration(void* steam_input, uint64_t input_handle, unsigned short usleftspeed, unsigned short usrightspeed)
+{
+    function_pointers::steam_api_input_trigger_vibration_ptr(steam_input, input_handle, usleftspeed, usrightspeed);
+}
+
+bool steam_api_manager::SteamAPI_ISteamUserStats_StoreStats(void* steam_user_stats)
+{
+    return function_pointers::steam_api_user_stats_store_stats_ptr(steam_user_stats);
+}
+
+uint64_t steam_api_manager::SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(void* steam_user_stats, const char* pch_leaderboard_name, void* eLeaderboardSortMethod, void* eLeaderboardDisplayType)
+{
+    return function_pointers::steam_api_user_stats_find_or_create_leaderboard_ptr(steam_user_stats, pch_leaderboard_name, eLeaderboardSortMethod, eLeaderboardDisplayType);
 }
