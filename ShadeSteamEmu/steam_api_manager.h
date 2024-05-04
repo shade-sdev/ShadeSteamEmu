@@ -219,4 +219,22 @@ public:
 
     static uint64_t SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(void* steam_user_stats, const char* pch_leaderboard_name, void* eLeaderboardSortMethod, void* eLeaderboardDisplayType);
 
+    static int SteamAPI_ISteamFriends_GetFriendCount(void* instance_ptr, int friends_flag);
+
+    static uint64 SteamAPI_ISteamFriends_GetFriendByIndex(void* instance_ptr, int friend_index, int friends_flag);
+
+    static const char* SteamAPI_ISteamFriends_GetFriendPersonaName(void* instance_ptr, uint64_t steamid_friend);
+
+    static const char* SteamAPI_ISteamFriends_GetFriendRichPresence(void* instance_ptr, uint64_t steamid_friend, const char* pch_key);
+
+    static bool SteamAPI_ISteamFriends_SetRichPresence(void* instance_ptr, const char* pch_key, const char* pch_value);
+
+    static uint64_t SteamAPI_ISteamMatchmaking_CreateLobby(void* instance_ptr, ELobbyType elobby_type, int cmax_members);
+
+    static EPersonaState SteamAPI_ISteamFriends_GetFriendPersonaState(void* instance_ptr, uint64_t steamid_friend);
+
+    static bool SteamAPI_ISteamMatchmaking_InviteUserToLobby(void* instance_ptr, uint64_t steamid_lobby, uint64_t steamid_invitee);
+
+    static void SteamAPI_ISteamMatchmaking_LeaveLobby(void* instance_ptr, uint64_t steamid_lobby);
+
 };

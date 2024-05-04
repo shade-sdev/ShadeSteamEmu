@@ -247,3 +247,4 @@ public:
 
 
 #endif // STEAM_API_COMMON_H
+

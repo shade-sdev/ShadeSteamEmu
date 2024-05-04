@@ -110,6 +110,31 @@ enum ESteamIPType
 	k_ESteamIPTypeIPv6 = 1,
 };
 
+enum ELobbyType
+{
+	k_ELobbyTypePrivate = 0,		// only way to join the lobby is to invite to someone else
+	k_ELobbyTypeFriendsOnly = 1,	// shows for friends or invitees, but not in lobby list
+	k_ELobbyTypePublic = 2,			// visible for friends and in lobby list
+	k_ELobbyTypeInvisible = 3,		// returned by search, but not visible to other friends 
+									//    useful if you want a user in two lobbies, for example matching groups together
+									//	  a user can be in only one regular lobby, and up to two invisible lobbies
+	k_ELobbyTypePrivateUnique = 4,	// private, unique and does not delete when empty - only one of these may exist per unique keypair set
+									// can only create from webapi
+};
+
+enum EPersonaState
+{
+	k_EPersonaStateOffline = 0,			// friend is not currently logged on
+	k_EPersonaStateOnline = 1,			// friend is logged on
+	k_EPersonaStateBusy = 2,			// user is on, but busy
+	k_EPersonaStateAway = 3,			// auto-away feature
+	k_EPersonaStateSnooze = 4,			// auto-away for a long time
+	k_EPersonaStateLookingToTrade = 5,	// Online, trading
+	k_EPersonaStateLookingToPlay = 6,	// Online, wanting to play
+	k_EPersonaStateInvisible = 7,		// Online, but appears offline to friends.  This status is never published to clients.
+	k_EPersonaStateMax,
+};
+
 #pragma pack( push, 1 )
 
 struct SteamIPAddress_t

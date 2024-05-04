@@ -154,3 +154,12 @@ typedef bool (*SteamAPI_ISteamUserStats_GetStatInt32_Ptr)(void* steam_user_stats
 typedef void (*SteamAPI_ISteamInput_TriggerVibration_Ptr)(void* steam_input, uint64_t input_handle, unsigned short usleftspeed, unsigned short usrightspeed);
 typedef bool (*SteamAPI_ISteamUserStats_StoreStats_Ptr)(void* steam_user_stats);
 typedef uint64_t (*SteamAPI_ISteamUserStats_FindOrCreateLeaderboard_Ptr)(void* steam_user_stats, const char* pch_leaderboard_name, void* eLeaderboardSortMethod, void* eLeaderboardDisplayType);
+typedef int (*SteamAPI_ISteam_FriendsCount_Ptr)(void* instance_ptr, int friends_flag);
+typedef uint64 (*SteamAPI_ISteam_GetFriendByIndex_Ptr)(void* instance_ptr, int friend_index, int friends_flag);
+typedef const char* (*SteamAPI_ISteam_GetFriendPersonaName_Ptr)(void* instance_ptr, uint64_t steamid_friend);
+typedef const char* (*SteamAPI_ISteam_GetFriendRichPresence_Ptr)(void* instance_ptr, uint64_t steamid_friend, const char* pch_key);
+typedef bool (*SteamAPI_ISteam_SetRichPresence_Ptr)(void* instance_ptr, const char* pch_key, const char* pch_value);
+typedef uint64_t (*SteamAPI_ISteam_CreateLobby_Ptr)(void* instance_ptr, ELobbyType elobby_type, int cmax_members);
+typedef EPersonaState (*SteamAPI_ISteam_GetFriendPersonaState_Ptr)(void* instance_ptr, uint64_t steamid_friend);
+typedef bool (*SteamAPI_ISteam_InviteUserToLobby_Ptr)(void* instance_ptr, uint64_t steamid_lobby, uint64_t steamid_invitee);
+typedef void (*SteamAPI_ISteam_LeaveLobby_Ptr)(void* instance_ptr, uint64_t steamid_lobby);

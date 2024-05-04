@@ -4,6 +4,7 @@
 #include <random>
 
 #include "MinHook.h"
+#include "steam/steam_api_common.h"
 #include "steam_pointers.h"
 
 const void* steam_api_manager::hooked_get_persona_name(void* instance_ptr)
@@ -373,7 +374,8 @@ void steam_api_manager::SteamAPI_Shutdown()
     function_pointers::steam_api_shutdown_ptr();
 }
 
-bool steam_api_manager::SteamAPI_ISteamUserStats_SetStatInt32(void* steam_user_stats, const char* pch_name, int32_t ndata)
+bool steam_api_manager::SteamAPI_ISteamUserStats_SetStatInt32(void* steam_user_stats, const char* pch_name,
+                                                              int32_t ndata)
 {
     return function_pointers::steam_api_user_stats_set_stat_int32_ptr(steam_user_stats, pch_name, ndata);
 }
@@ -423,17 +425,20 @@ void steam_api_manager::SteamAPI_ISteamInput_RunFrame(void* steam_input, bool b_
     return function_pointers::steam_api_input_run_frame_ptr(steam_input, b_reserved_value);
 }
 
-bool steam_api_manager::SteamAPI_ISteamUserStats_GetStatFloat(void* steam_user_stats, const char* pch_name, float* pdata)
+bool steam_api_manager::SteamAPI_ISteamUserStats_GetStatFloat(void* steam_user_stats, const char* pch_name,
+                                                              float* pdata)
 {
     return function_pointers::steam_api_user_stats_get_stat_float_ptr(steam_user_stats, pch_name, pdata);
 }
 
-bool steam_api_manager::SteamAPI_ISteamUserStats_GetStatInt32(void* steam_user_stats, const char* pch_name, int32_t* pdata)
+bool steam_api_manager::SteamAPI_ISteamUserStats_GetStatInt32(void* steam_user_stats, const char* pch_name,
+                                                              int32_t* pdata)
 {
     return function_pointers::steam_api_user_stats_get_stat_int32_ptr(steam_user_stats, pch_name, pdata);
 }
 
-void steam_api_manager::SteamAPI_ISteamInput_TriggerVibration(void* steam_input, uint64_t input_handle, unsigned short usleftspeed, unsigned short usrightspeed)
+void steam_api_manager::SteamAPI_ISteamInput_TriggerVibration(void* steam_input, uint64_t input_handle,
+                                                              unsigned short usleftspeed, unsigned short usrightspeed)
 {
     function_pointers::steam_api_input_trigger_vibration_ptr(steam_input, input_handle, usleftspeed, usrightspeed);
 }
@@ -443,7 +448,58 @@ bool steam_api_manager::SteamAPI_ISteamUserStats_StoreStats(void* steam_user_sta
     return function_pointers::steam_api_user_stats_store_stats_ptr(steam_user_stats);
 }
 
-uint64_t steam_api_manager::SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(void* steam_user_stats, const char* pch_leaderboard_name, void* eLeaderboardSortMethod, void* eLeaderboardDisplayType)
+uint64_t steam_api_manager::SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(
+    void* steam_user_stats,
+    const char* pch_leaderboard_name,
+    void* eLeaderboardSortMethod,
+    void* eLeaderboardDisplayType
+)
 {
-    return function_pointers::steam_api_user_stats_find_or_create_leaderboard_ptr(steam_user_stats, pch_leaderboard_name, eLeaderboardSortMethod, eLeaderboardDisplayType);
+    return function_pointers::steam_api_user_stats_find_or_create_leaderboard_ptr(
+        steam_user_stats, pch_leaderboard_name, eLeaderboardSortMethod, eLeaderboardDisplayType);
+}
+
+int steam_api_manager::SteamAPI_ISteamFriends_GetFriendCount(void* instance_ptr, int friends_flag)
+{
+    return function_pointers::steam_api_i_steam_friends_count_ptr(instance_ptr, friends_flag);
+}
+
+uint64 steam_api_manager::SteamAPI_ISteamFriends_GetFriendByIndex(void* instance_ptr, int friend_index, int friends_flag)
+{
+    return function_pointers::steam_api_i_steam_get_friend_by_index_ptr(instance_ptr, friend_index, friends_flag);
+}
+
+const char* steam_api_manager::SteamAPI_ISteamFriends_GetFriendPersonaName(void* instance_ptr, uint64_t steamid_friend)
+{
+    return function_pointers::steam_api_i_steam_get_friend_persona_name_ptr(instance_ptr, steamid_friend);
+}
+
+const char* steam_api_manager::SteamAPI_ISteamFriends_GetFriendRichPresence(void* instance_ptr, uint64_t steamid_friend, const char* pch_key)
+{
+    return function_pointers::steam_api_i_steam_get_friend_rich_presence_ptr(instance_ptr, steamid_friend, pch_key);
+}
+
+bool steam_api_manager::SteamAPI_ISteamFriends_SetRichPresence(void* instance_ptr, const char* pch_key, const char* pch_value)
+{
+    return function_pointers::steam_api_i_steam_set_rich_presence_ptr(instance_ptr, pch_key, pch_value);
+}
+
+uint64_t steam_api_manager::SteamAPI_ISteamMatchmaking_CreateLobby(void* instance_ptr, ELobbyType elobby_type, int cmax_members)
+{
+    return function_pointers::steam_api_i_steam_create_lobby_ptr(instance_ptr, elobby_type, cmax_members);
+}
+
+EPersonaState steam_api_manager::SteamAPI_ISteamFriends_GetFriendPersonaState(void* instance_ptr, uint64_t steamid_friend)
+{
+    return function_pointers::steam_api_i_steam_get_friend_persona_state_ptr(instance_ptr, steamid_friend);
+}
+
+bool steam_api_manager::SteamAPI_ISteamMatchmaking_InviteUserToLobby(void* instance_ptr, uint64_t steamid_lobby, uint64_t steamid_invitee)
+{
+    return function_pointers::steam_api_i_steam_invite_user_to_lobby_ptr(instance_ptr, steamid_lobby, steamid_invitee);
+}
+
+void steam_api_manager::SteamAPI_ISteamMatchmaking_LeaveLobby(void* instance_ptr, uint64_t steamid_lobby)
+{
+    function_pointers::steam_api_i_steam_leave_lobby_ptr(instance_ptr, steamid_lobby);
 }

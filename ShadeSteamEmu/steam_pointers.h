@@ -41,7 +41,8 @@ public:
 
     static SteamAPI_Shutdown_Ptr steam_api_shutdown_ptr;
     static SteamAPI_ISteamUser_GetAuthSessionTicket_Ptr steam_api_user_get_auth_session_ticket_ptr;
-    static SteamAPI_SteamNetworkingIdentity_SetGenericString_Ptr steam_api_steam_networking_identity_set_generic_string_ptr;
+    static SteamAPI_SteamNetworkingIdentity_SetGenericString_Ptr
+    steam_api_steam_networking_identity_set_generic_string_ptr;
     static SteamAPI_IsSteamRunning_Ptr steam_api_is_steam_running_ptr;
     static SteamAPI_Input_Init_Ptr steam_api_input_init_ptr;
     static SteamAPI_EnableDeviceCallbacks_Ptr steam_api_enable_device_callbacks_ptr;
@@ -66,6 +67,15 @@ public:
     static SteamAPI_ISteamInput_TriggerVibration_Ptr steam_api_input_trigger_vibration_ptr;
     static SteamAPI_ISteamUserStats_StoreStats_Ptr steam_api_user_stats_store_stats_ptr;
     static SteamAPI_ISteamUserStats_FindOrCreateLeaderboard_Ptr steam_api_user_stats_find_or_create_leaderboard_ptr;
+    static SteamAPI_ISteam_FriendsCount_Ptr steam_api_i_steam_friends_count_ptr;
+    static SteamAPI_ISteam_GetFriendByIndex_Ptr steam_api_i_steam_get_friend_by_index_ptr;
+    static SteamAPI_ISteam_GetFriendPersonaName_Ptr steam_api_i_steam_get_friend_persona_name_ptr;
+    static SteamAPI_ISteam_GetFriendRichPresence_Ptr steam_api_i_steam_get_friend_rich_presence_ptr;
+    static SteamAPI_ISteam_SetRichPresence_Ptr steam_api_i_steam_set_rich_presence_ptr;
+    static SteamAPI_ISteam_CreateLobby_Ptr steam_api_i_steam_create_lobby_ptr;
+    static SteamAPI_ISteam_GetFriendPersonaState_Ptr steam_api_i_steam_get_friend_persona_state_ptr;
+    static SteamAPI_ISteam_InviteUserToLobby_Ptr steam_api_i_steam_invite_user_to_lobby_ptr;
+    static SteamAPI_ISteam_LeaveLobby_Ptr steam_api_i_steam_leave_lobby_ptr;
 
     static bool initialize_function_pointers();
     template <typename FuncPtrType>

@@ -43,7 +43,8 @@ SteamInternal_CreateInterface_GetPtr function_pointers::create_interface_ptr = n
 SteamAPI_ISteamApps_BIsSubscribedApp_GetPtr function_pointers::is_subscribed_app_ptr = nullptr;
 SteamAPI_ISteamUser_BLoggedOn_GetPtr function_pointers::blogged_ptr = nullptr;
 SteamInternal_FindOrCreateUserInterface_Ptr function_pointers::steam_internal_findorcreateuserinterface_ptr = nullptr;
-SteamAPI_SteamNetworkingIdentity_SetGenericString_Ptr function_pointers::steam_api_steam_networking_identity_set_generic_string_ptr = nullptr;
+SteamAPI_SteamNetworkingIdentity_SetGenericString_Ptr
+function_pointers::steam_api_steam_networking_identity_set_generic_string_ptr = nullptr;
 SteamAPI_ISteamUser_GetAuthSessionTicket_Ptr function_pointers::steam_api_user_get_auth_session_ticket_ptr = nullptr;
 SteamAPI_Shutdown_Ptr function_pointers::steam_api_shutdown_ptr = nullptr;
 SteamAPI_ISteamUserStats_SetStatInt32_Ptr function_pointers::steam_api_user_stats_set_stat_int32_ptr = nullptr;
@@ -51,16 +52,29 @@ SteamAPI_ISteamUser_GetSteamID_Ptr function_pointers::steam_api_user_get_steam_i
 SteamAPI_ISteamUserStats_RequestUserStats_Ptr function_pointers::steam_api_user_stats_request_user_stats_ptr = nullptr;
 SteamAPI_ISteamApps_BIsDlcInstalled_Ptr function_pointers::steam_api_apps_b_is_dlc_installed_ptr = nullptr;
 SteamAPI_ManualDispatch_RunFrame_Ptr function_pointers::steam_api_manual_dispatch_run_frame_ptr = nullptr;
-SteamAPI_ManualDispatch_GetNextCallback_Ptr function_pointers::steam_api_manual_dispatch_get_next_callback_ptr = nullptr;
-SteamAPI_ManualDispatch_FreeLastCallback_Ptr function_pointers::steam_api_manual_dispatch_free_last_callback_ptr = nullptr;
+SteamAPI_ManualDispatch_GetNextCallback_Ptr function_pointers::steam_api_manual_dispatch_get_next_callback_ptr =
+    nullptr;
+SteamAPI_ManualDispatch_FreeLastCallback_Ptr function_pointers::steam_api_manual_dispatch_free_last_callback_ptr =
+    nullptr;
 SteamAPI_ISteamRemoteStorage_FileExists_Ptr function_pointers::steam_api_remote_storage_file_exists_ptr = nullptr;
-SteamAPI_ISteamInput_GetConnectedControllers_Ptr function_pointers::steam_api_input_get_connected_controllers_ptr = nullptr;
+SteamAPI_ISteamInput_GetConnectedControllers_Ptr function_pointers::steam_api_input_get_connected_controllers_ptr =
+    nullptr;
 SteamAPI_ISteamInput_RunFrame_Ptr function_pointers::steam_api_input_run_frame_ptr = nullptr;
 SteamAPI_ISteamUserStats_GetStatFloat_Ptr function_pointers::steam_api_user_stats_get_stat_float_ptr = nullptr;
 SteamAPI_ISteamUserStats_GetStatInt32_Ptr function_pointers::steam_api_user_stats_get_stat_int32_ptr = nullptr;
 SteamAPI_ISteamInput_TriggerVibration_Ptr function_pointers::steam_api_input_trigger_vibration_ptr = nullptr;
 SteamAPI_ISteamUserStats_StoreStats_Ptr function_pointers::steam_api_user_stats_store_stats_ptr = nullptr;
-SteamAPI_ISteamUserStats_FindOrCreateLeaderboard_Ptr function_pointers::steam_api_user_stats_find_or_create_leaderboard_ptr = nullptr;
+SteamAPI_ISteamUserStats_FindOrCreateLeaderboard_Ptr
+function_pointers::steam_api_user_stats_find_or_create_leaderboard_ptr = nullptr;
+SteamAPI_ISteam_FriendsCount_Ptr function_pointers::steam_api_i_steam_friends_count_ptr = nullptr;
+SteamAPI_ISteam_GetFriendByIndex_Ptr function_pointers::steam_api_i_steam_get_friend_by_index_ptr = nullptr;
+SteamAPI_ISteam_GetFriendPersonaName_Ptr function_pointers::steam_api_i_steam_get_friend_persona_name_ptr = nullptr;
+SteamAPI_ISteam_GetFriendRichPresence_Ptr function_pointers::steam_api_i_steam_get_friend_rich_presence_ptr = nullptr;
+SteamAPI_ISteam_SetRichPresence_Ptr function_pointers::steam_api_i_steam_set_rich_presence_ptr = nullptr;
+SteamAPI_ISteam_CreateLobby_Ptr function_pointers::steam_api_i_steam_create_lobby_ptr = nullptr;
+SteamAPI_ISteam_GetFriendPersonaState_Ptr function_pointers::steam_api_i_steam_get_friend_persona_state_ptr = nullptr;
+SteamAPI_ISteam_InviteUserToLobby_Ptr function_pointers::steam_api_i_steam_invite_user_to_lobby_ptr = nullptr;
+SteamAPI_ISteam_LeaveLobby_Ptr function_pointers::steam_api_i_steam_leave_lobby_ptr = nullptr;
 
 bool function_pointers::initialize_function_pointers()
 {
@@ -105,7 +119,8 @@ bool function_pointers::initialize_function_pointers()
 
     steam_api_is_steam_running_ptr = load_pointer<SteamAPI_IsSteamRunning_Ptr>(steam_is_steam_running);
     steam_api_input_init_ptr = load_pointer<SteamAPI_Input_Init_Ptr>(steam_api_steam_input_init);
-    steam_api_enable_device_callbacks_ptr = load_pointer<SteamAPI_EnableDeviceCallbacks_Ptr>(steam_api_enable_device_callbacks);
+    steam_api_enable_device_callbacks_ptr = load_pointer<SteamAPI_EnableDeviceCallbacks_Ptr>(
+        steam_api_enable_device_callbacks);
     steam_api_manualdispatch_init_ptr = load_pointer<SteamAPI_ManualDispatch_Init_Ptr>(steam_api_manualdispatch_init);
     get_persona_name_ptr = load_pointer<
         SteamAPI_ISteamFriends_GetPersonaName_Ptr>(steam_api_isteamfriends_persona_name);
@@ -116,25 +131,56 @@ bool function_pointers::initialize_function_pointers()
         steam_api_steamapps_bissubscribedapp);
     blogged_ptr = load_pointer<SteamAPI_ISteamUser_BLoggedOn_GetPtr>(steam_api_steamuser_bloggedon);
     steam_api_steam_networking_identity_set_generic_string_ptr =
-        load_pointer<SteamAPI_SteamNetworkingIdentity_SetGenericString_Ptr>(steam_networking_identity_set_generic_string);
-    steam_api_user_get_auth_session_ticket_ptr = load_pointer<SteamAPI_ISteamUser_GetAuthSessionTicket_Ptr>(steam_user_get_auth_session_ticket);
+        load_pointer<SteamAPI_SteamNetworkingIdentity_SetGenericString_Ptr>(
+            steam_networking_identity_set_generic_string);
+    steam_api_user_get_auth_session_ticket_ptr = load_pointer<SteamAPI_ISteamUser_GetAuthSessionTicket_Ptr>(
+        steam_user_get_auth_session_ticket);
     steam_api_shutdown_ptr = load_pointer<SteamAPI_Shutdown_Ptr>(steam_shutdown);
-    steam_api_user_stats_set_stat_int32_ptr = load_pointer<SteamAPI_ISteamUserStats_SetStatInt32_Ptr>(steam_user_stats_set_stat_int32);
+    steam_api_user_stats_set_stat_int32_ptr = load_pointer<SteamAPI_ISteamUserStats_SetStatInt32_Ptr>(
+        steam_user_stats_set_stat_int32);
     steam_api_user_get_steam_id_ptr = load_pointer<SteamAPI_ISteamUser_GetSteamID_Ptr>(steam_user_get_steam_id);
-    steam_api_user_stats_request_user_stats_ptr = load_pointer<SteamAPI_ISteamUserStats_RequestUserStats_Ptr>(steam_user_stats_request_user_stats);
-    steam_api_apps_b_is_dlc_installed_ptr = load_pointer<SteamAPI_ISteamApps_BIsDlcInstalled_Ptr>(steam_apps_b_is_dlc_installed);
-    steam_api_manual_dispatch_run_frame_ptr = load_pointer<SteamAPI_ManualDispatch_RunFrame_Ptr>(steam_manual_dispatch_run_frame);
-    steam_api_manual_dispatch_get_next_callback_ptr = load_pointer<SteamAPI_ManualDispatch_GetNextCallback_Ptr>(steam_manual_dispatch_get_next_callback);
-    steam_api_manual_dispatch_free_last_callback_ptr = load_pointer<SteamAPI_ManualDispatch_FreeLastCallback_Ptr>(steam_manual_dispatch_free_last_callback);
-    steam_api_remote_storage_file_exists_ptr = load_pointer<SteamAPI_ISteamRemoteStorage_FileExists_Ptr>(steam_remote_storage_file_exists);
-    steam_api_input_get_connected_controllers_ptr = load_pointer<SteamAPI_ISteamInput_GetConnectedControllers_Ptr>(steam_input_get_connected_controllers);
+    steam_api_user_stats_request_user_stats_ptr = load_pointer<SteamAPI_ISteamUserStats_RequestUserStats_Ptr>(
+        steam_user_stats_request_user_stats);
+    steam_api_apps_b_is_dlc_installed_ptr = load_pointer<SteamAPI_ISteamApps_BIsDlcInstalled_Ptr>(
+        steam_apps_b_is_dlc_installed);
+    steam_api_manual_dispatch_run_frame_ptr = load_pointer<SteamAPI_ManualDispatch_RunFrame_Ptr>(
+        steam_manual_dispatch_run_frame);
+    steam_api_manual_dispatch_get_next_callback_ptr = load_pointer<SteamAPI_ManualDispatch_GetNextCallback_Ptr>(
+        steam_manual_dispatch_get_next_callback);
+    steam_api_manual_dispatch_free_last_callback_ptr = load_pointer<SteamAPI_ManualDispatch_FreeLastCallback_Ptr>(
+        steam_manual_dispatch_free_last_callback);
+    steam_api_remote_storage_file_exists_ptr = load_pointer<SteamAPI_ISteamRemoteStorage_FileExists_Ptr>(
+        steam_remote_storage_file_exists);
+    steam_api_input_get_connected_controllers_ptr = load_pointer<SteamAPI_ISteamInput_GetConnectedControllers_Ptr>(
+        steam_input_get_connected_controllers);
     steam_api_input_run_frame_ptr = load_pointer<SteamAPI_ISteamInput_RunFrame_Ptr>(steam_input_run_frame);
-    steam_api_user_stats_get_stat_float_ptr = load_pointer<SteamAPI_ISteamUserStats_GetStatFloat_Ptr>(steam_user_stats_get_stat_float);
-    steam_api_user_stats_get_stat_int32_ptr = load_pointer<SteamAPI_ISteamUserStats_GetStatInt32_Ptr>(steam_user_stats_get_stat_int32);
-    steam_api_input_trigger_vibration_ptr = load_pointer<SteamAPI_ISteamInput_TriggerVibration_Ptr>(steam_input_trigger_vibration);
-    steam_api_user_stats_store_stats_ptr = load_pointer<SteamAPI_ISteamUserStats_StoreStats_Ptr>(steam_user_stats_store_stats);
-    steam_api_user_stats_find_or_create_leaderboard_ptr = load_pointer<SteamAPI_ISteamUserStats_FindOrCreateLeaderboard_Ptr>(steam_user_stats_find_or_create_leaderboard);
-
+    steam_api_user_stats_get_stat_float_ptr = load_pointer<SteamAPI_ISteamUserStats_GetStatFloat_Ptr>(
+        steam_user_stats_get_stat_float);
+    steam_api_user_stats_get_stat_int32_ptr = load_pointer<SteamAPI_ISteamUserStats_GetStatInt32_Ptr>(
+        steam_user_stats_get_stat_int32);
+    steam_api_input_trigger_vibration_ptr = load_pointer<SteamAPI_ISteamInput_TriggerVibration_Ptr>(
+        steam_input_trigger_vibration);
+    steam_api_user_stats_store_stats_ptr = load_pointer<SteamAPI_ISteamUserStats_StoreStats_Ptr>(
+        steam_user_stats_store_stats);
+    steam_api_user_stats_find_or_create_leaderboard_ptr = load_pointer<
+        SteamAPI_ISteamUserStats_FindOrCreateLeaderboard_Ptr>(steam_user_stats_find_or_create_leaderboard);
+    steam_api_i_steam_friends_count_ptr = load_pointer<SteamAPI_ISteam_FriendsCount_Ptr>(steam_friends_count);
+    steam_api_i_steam_get_friend_by_index_ptr = load_pointer<SteamAPI_ISteam_GetFriendByIndex_Ptr>(
+        steam_friends_get_friend_by_index);
+    steam_api_i_steam_get_friend_persona_name_ptr = load_pointer<SteamAPI_ISteam_GetFriendPersonaName_Ptr>(
+        steam_friends_get_friend_persona_name);
+    steam_api_i_steam_get_friend_rich_presence_ptr = load_pointer<SteamAPI_ISteam_GetFriendRichPresence_Ptr>(
+        steam_friends_get_friend_rich_presence);
+    steam_api_i_steam_set_rich_presence_ptr = load_pointer<SteamAPI_ISteam_SetRichPresence_Ptr>(
+        steam_friends_set_rich_presence);
+    steam_api_i_steam_create_lobby_ptr = load_pointer<SteamAPI_ISteam_CreateLobby_Ptr>(steam_matchmaking_create_lobby);
+    steam_api_i_steam_get_friend_persona_state_ptr = load_pointer<SteamAPI_ISteam_GetFriendPersonaState_Ptr>(
+        steam_friends_get_friend_persona_state);
+    steam_api_i_steam_invite_user_to_lobby_ptr = load_pointer<SteamAPI_ISteam_InviteUserToLobby_Ptr>(
+        steam_matchmaking_invite_user_to_lobby);
+    steam_api_i_steam_leave_lobby_ptr  = load_pointer<SteamAPI_ISteam_LeaveLobby_Ptr >(
+        steam_matchmaking_leave_lobby );
+    
     return hsteam_pipe_ptr && hsteam_user_ptr && steam_client_ptr &&
         steam_user_ptr && steam_friends_ptr && get_persona_name_ptr &&
         create_interface_ptr && steam_apps_ptr && is_subscribed_app_ptr && blogged_ptr

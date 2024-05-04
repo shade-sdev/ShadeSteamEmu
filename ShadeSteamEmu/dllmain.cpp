@@ -483,3 +483,48 @@ extern "C" __declspec(dllexport) uint64_t SteamAPI_ISteamUserStats_FindOrCreateL
 {
     return steam_api_manager::SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(steam_user_stats, pch_leaderboard_name, eLeaderboardSortMethod, eLeaderboardDisplayType);
 }
+
+extern "C" __declspec(dllexport) int SteamAPI_ISteamFriends_GetFriendCount(void* instance_ptr, const int friends_flag)
+{
+    return steam_api_manager::SteamAPI_ISteamFriends_GetFriendCount(instance_ptr, friends_flag);
+}
+
+extern "C" __declspec(dllexport) uint64 SteamAPI_ISteamFriends_GetFriendByIndex(void* instance_ptr, int friend_index, const int friends_flag)
+{
+    return steam_api_manager::SteamAPI_ISteamFriends_GetFriendByIndex(instance_ptr, friend_index, friends_flag);
+}
+
+extern "C" __declspec(dllexport) const char* SteamAPI_ISteamFriends_GetFriendPersonaName(void* instance_ptr, uint64_t steamid_friend)
+{
+    return steam_api_manager::SteamAPI_ISteamFriends_GetFriendPersonaName(instance_ptr, steamid_friend);
+}
+
+extern "C" __declspec(dllexport) const char* SteamAPI_ISteamFriends_GetFriendRichPresence(void* instance_ptr, uint64_t steamid_friend, const char* pch_key)
+{
+    return steam_api_manager::SteamAPI_ISteamFriends_GetFriendRichPresence(instance_ptr, steamid_friend, pch_key);
+}
+
+extern "C" __declspec(dllexport) bool SteamAPI_ISteamFriends_SetRichPresence(void* instance_ptr, const char* pch_key, const char* pch_value)
+{
+    return steam_api_manager::SteamAPI_ISteamFriends_SetRichPresence(instance_ptr, pch_key, pch_value);
+}
+
+extern "C" __declspec(dllexport) uint64_t SteamAPI_ISteamMatchmaking_CreateLobby(void* instance_ptr, ELobbyType elobby_type, int cmax_members)
+{
+    return steam_api_manager::SteamAPI_ISteamMatchmaking_CreateLobby(instance_ptr, elobby_type, cmax_members);
+}
+
+extern "C" __declspec(dllexport) EPersonaState SteamAPI_ISteamFriends_GetFriendPersonaState(void* instance_ptr, uint64_t steamid_friend)
+{
+    return steam_api_manager::SteamAPI_ISteamFriends_GetFriendPersonaState(instance_ptr, steamid_friend);
+}
+
+extern "C" __declspec(dllexport) bool SteamAPI_ISteamMatchmaking_InviteUserToLobby(void* instance_ptr, uint64_t steamid_lobby, uint64_t steamid_invitee)
+{
+    return steam_api_manager::SteamAPI_ISteamMatchmaking_InviteUserToLobby(instance_ptr, steamid_lobby, steamid_invitee);
+}
+
+extern "C" __declspec(dllexport) void SteamAPI_ISteamMatchmaking_LeaveLobby(void* instance_ptr, uint64_t steamid_lobby)
+{
+    steam_api_manager::SteamAPI_ISteamMatchmaking_LeaveLobby(instance_ptr, steamid_lobby);
+}
