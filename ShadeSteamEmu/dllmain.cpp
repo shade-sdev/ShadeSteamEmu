@@ -410,7 +410,8 @@ extern "C" __declspec(dllexport) void SteamAPI_Shutdown()
     steam_api_manager::SteamAPI_Shutdown();
 }
 
-extern "C" __declspec(dllexport) bool SteamAPI_ISteamUserStats_SetStatInt32(void* steam_user_stats, const char* pch_name, int32_t ndata)
+extern "C" __declspec(dllexport) bool SteamAPI_ISteamUserStats_SetStatInt32(
+    void* steam_user_stats, const char* pch_name, int32_t ndata)
 {
     return steam_api_manager::SteamAPI_ISteamUserStats_SetStatInt32(steam_user_stats, pch_name, ndata);
 }
@@ -420,7 +421,8 @@ extern "C" __declspec(dllexport) uint64_t SteamAPI_ISteamUser_GetSteamID(void* s
     return steam_api_manager::SteamAPI_ISteamUser_GetSteamID(steam_user);
 }
 
-extern "C" __declspec(dllexport) uint64_t SteamAPI_ISteamUserStats_RequestUserStats(void* steam_user_stats, uint64_t steamid_user)
+extern "C" __declspec(dllexport) uint64_t SteamAPI_ISteamUserStats_RequestUserStats(
+    void* steam_user_stats, uint64_t steamid_user)
 {
     return steam_api_manager::SteamAPI_ISteamUserStats_RequestUserStats(steam_user_stats, steamid_user);
 }
@@ -445,12 +447,14 @@ extern "C" __declspec(dllexport) void SteamAPI_ManualDispatch_FreeLastCallback(v
     steam_api_manager::SteamAPI_ManualDispatch_FreeLastCallback(hsteampipe);
 }
 
-extern "C" __declspec(dllexport) bool SteamAPI_ISteamRemoteStorage_FileExists(void* steam_remote_storage, const char* pch_file)
+extern "C" __declspec(dllexport) bool SteamAPI_ISteamRemoteStorage_FileExists(
+    void* steam_remote_storage, const char* pch_file)
 {
     return steam_api_manager::SteamAPI_ISteamRemoteStorage_FileExists(steam_remote_storage, pch_file);
 }
 
-extern "C" __declspec(dllexport) int SteamAPI_ISteamInput_GetConnectedControllers(void* steam_input, uint64_t* handles_out)
+extern "C" __declspec(dllexport) int SteamAPI_ISteamInput_GetConnectedControllers(
+    void* steam_input, uint64_t* handles_out)
 {
     return steam_api_manager::SteamAPI_ISteamInput_GetConnectedControllers(steam_input, handles_out);
 }
@@ -460,17 +464,20 @@ extern "C" __declspec(dllexport) void SteamAPI_ISteamInput_RunFrame(void* steam_
     steam_api_manager::SteamAPI_ISteamInput_RunFrame(steam_input, b_reserved_value);
 }
 
-extern "C" __declspec(dllexport) bool SteamAPI_ISteamUserStats_GetStatFloat(void* steam_user_stats, const char* pch_name, float* pdata)
+extern "C" __declspec(dllexport) bool SteamAPI_ISteamUserStats_GetStatFloat(
+    void* steam_user_stats, const char* pch_name, float* pdata)
 {
     return steam_api_manager::SteamAPI_ISteamUserStats_GetStatFloat(steam_user_stats, pch_name, pdata);
 }
 
-extern "C" __declspec(dllexport) bool SteamAPI_ISteamUserStats_GetStatInt32(void* steam_user_stats, const char* pch_name, int32_t* pdata)
+extern "C" __declspec(dllexport) bool SteamAPI_ISteamUserStats_GetStatInt32(
+    void* steam_user_stats, const char* pch_name, int32_t* pdata)
 {
     return steam_api_manager::SteamAPI_ISteamUserStats_GetStatInt32(steam_user_stats, pch_name, pdata);
 }
 
-extern "C" __declspec(dllexport) void SteamAPI_ISteamInput_TriggerVibration(void* steam_input, uint64_t input_handle, unsigned short usleftspeed, unsigned short usrightspeed)
+extern "C" __declspec(dllexport) void SteamAPI_ISteamInput_TriggerVibration(
+    void* steam_input, uint64_t input_handle, unsigned short usleftspeed, unsigned short usrightspeed)
 {
     steam_api_manager::SteamAPI_ISteamInput_TriggerVibration(steam_input, input_handle, usleftspeed, usrightspeed);
 }
@@ -480,9 +487,12 @@ extern "C" __declspec(dllexport) bool SteamAPI_ISteamUserStats_StoreStats(void* 
     return steam_api_manager::SteamAPI_ISteamUserStats_StoreStats(steam_user_stats);
 }
 
-extern "C" __declspec(dllexport) uint64_t SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(void* steam_user_stats, const char* pch_leaderboard_name, void* eLeaderboardSortMethod, void* eLeaderboardDisplayType)
+extern "C" __declspec(dllexport) uint64_t SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(
+    void* steam_user_stats, const char* pch_leaderboard_name, void* eLeaderboardSortMethod,
+    void* eLeaderboardDisplayType)
 {
-    return steam_api_manager::SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(steam_user_stats, pch_leaderboard_name, eLeaderboardSortMethod, eLeaderboardDisplayType);
+    return steam_api_manager::SteamAPI_ISteamUserStats_FindOrCreateLeaderboard(
+        steam_user_stats, pch_leaderboard_name, eLeaderboardSortMethod, eLeaderboardDisplayType);
 }
 
 extern "C" __declspec(dllexport) int SteamAPI_ISteamFriends_GetFriendCount(void* instance_ptr, const int friends_flag)
@@ -490,39 +500,47 @@ extern "C" __declspec(dllexport) int SteamAPI_ISteamFriends_GetFriendCount(void*
     return steam_api_manager::SteamAPI_ISteamFriends_GetFriendCount(instance_ptr, friends_flag);
 }
 
-extern "C" __declspec(dllexport) uint64 SteamAPI_ISteamFriends_GetFriendByIndex(void* instance_ptr, int friend_index, const int friends_flag)
+extern "C" __declspec(dllexport) uint64 SteamAPI_ISteamFriends_GetFriendByIndex(
+    void* instance_ptr, int friend_index, const int friends_flag)
 {
     return steam_api_manager::SteamAPI_ISteamFriends_GetFriendByIndex(instance_ptr, friend_index, friends_flag);
 }
 
-extern "C" __declspec(dllexport) const char* SteamAPI_ISteamFriends_GetFriendPersonaName(void* instance_ptr, uint64_t steamid_friend)
+extern "C" __declspec(dllexport) const char* SteamAPI_ISteamFriends_GetFriendPersonaName(
+    void* instance_ptr, uint64_t steamid_friend)
 {
     return steam_api_manager::SteamAPI_ISteamFriends_GetFriendPersonaName(instance_ptr, steamid_friend);
 }
 
-extern "C" __declspec(dllexport) const char* SteamAPI_ISteamFriends_GetFriendRichPresence(void* instance_ptr, uint64_t steamid_friend, const char* pch_key)
+extern "C" __declspec(dllexport) const char* SteamAPI_ISteamFriends_GetFriendRichPresence(
+    void* instance_ptr, uint64_t steamid_friend, const char* pch_key)
 {
     return steam_api_manager::SteamAPI_ISteamFriends_GetFriendRichPresence(instance_ptr, steamid_friend, pch_key);
 }
 
-extern "C" __declspec(dllexport) bool SteamAPI_ISteamFriends_SetRichPresence(void* instance_ptr, const char* pch_key, const char* pch_value)
+extern "C" __declspec(dllexport) bool SteamAPI_ISteamFriends_SetRichPresence(
+    void* instance_ptr, const char* pch_key, const char* pch_value)
 {
     return steam_api_manager::SteamAPI_ISteamFriends_SetRichPresence(instance_ptr, pch_key, pch_value);
 }
 
-extern "C" __declspec(dllexport) uint64_t SteamAPI_ISteamMatchmaking_CreateLobby(void* instance_ptr, ELobbyType elobby_type, int cmax_members)
+extern "C" __declspec(dllexport) uint64_t SteamAPI_ISteamMatchmaking_CreateLobby(
+    void* instance_ptr, ELobbyType elobby_type, int cmax_members)
 {
     return steam_api_manager::SteamAPI_ISteamMatchmaking_CreateLobby(instance_ptr, elobby_type, cmax_members);
 }
 
-extern "C" __declspec(dllexport) EPersonaState SteamAPI_ISteamFriends_GetFriendPersonaState(void* instance_ptr, uint64_t steamid_friend)
+extern "C" __declspec(dllexport) EPersonaState SteamAPI_ISteamFriends_GetFriendPersonaState(
+    void* instance_ptr, uint64_t steamid_friend)
 {
     return steam_api_manager::SteamAPI_ISteamFriends_GetFriendPersonaState(instance_ptr, steamid_friend);
 }
 
-extern "C" __declspec(dllexport) bool SteamAPI_ISteamMatchmaking_InviteUserToLobby(void* instance_ptr, uint64_t steamid_lobby, uint64_t steamid_invitee)
+extern "C" __declspec(dllexport) bool SteamAPI_ISteamMatchmaking_InviteUserToLobby(
+    void* instance_ptr, uint64_t steamid_lobby, uint64_t steamid_invitee)
 {
-    return steam_api_manager::SteamAPI_ISteamMatchmaking_InviteUserToLobby(instance_ptr, steamid_lobby, steamid_invitee);
+    return steam_api_manager::SteamAPI_ISteamMatchmaking_InviteUserToLobby(
+        instance_ptr, steamid_lobby, steamid_invitee);
 }
 
 extern "C" __declspec(dllexport) void SteamAPI_ISteamMatchmaking_LeaveLobby(void* instance_ptr, uint64_t steamid_lobby)
@@ -530,19 +548,19 @@ extern "C" __declspec(dllexport) void SteamAPI_ISteamMatchmaking_LeaveLobby(void
     steam_api_manager::SteamAPI_ISteamMatchmaking_LeaveLobby(instance_ptr, steamid_lobby);
 }
 
-extern "C" __declspec(dllexport) void SteamAPI_RegisterCallResult(CCallbackBase* pCallback, uint64_t api_call)
+extern "C" __declspec(dllexport) void SteamAPI_RegisterCallResult(void* call_back_back, uint64_t api_call)
 {
-    steam_api_manager::SteamAPI_RegisterCallResult(pCallback, api_call);
+    steam_api_manager::SteamAPI_RegisterCallResult(call_back_back, api_call);
 }
 
-extern "C" __declspec(dllexport) void SteamAPI_UnregisterCallResult(CCallbackBase* pCallback, uint64_t api_call)
+extern "C" __declspec(dllexport) void SteamAPI_UnregisterCallResult(void* call_back_back, uint64_t api_call)
 {
-    steam_api_manager::SteamAPI_UnregisterCallResult(pCallback, api_call);
+    steam_api_manager::SteamAPI_UnregisterCallResult(call_back_back, api_call);
 }
 
-extern "C" __declspec(dllexport) void SteamAPI_UnregisterCallback(CCallbackBase* pCallback)
+extern "C" __declspec(dllexport) void SteamAPI_UnregisterCallback(void* call_back_back)
 {
-    steam_api_manager::SteamAPI_UnregisterCallback(pCallback);
+    steam_api_manager::SteamAPI_UnregisterCallback(call_back_back);
 }
 
 extern "C" __declspec(dllexport) void SteamAPI_RunCallbacks()
@@ -550,17 +568,28 @@ extern "C" __declspec(dllexport) void SteamAPI_RunCallbacks()
     steam_api_manager::SteamAPI_RunCallbacks();
 }
 
-extern "C" __declspec(dllexport) void SteamInternal_FindOrCreateGameServerInterface(void* h_steam_user, const char* version)
+extern "C" __declspec(dllexport) void SteamInternal_FindOrCreateGameServerInterface(
+    void* h_steam_user, const char* version)
 {
     return steam_api_manager::SteamInternal_FindOrCreateGameServerInterface(h_steam_user, version);
 }
 
-extern "C" __declspec(dllexport) void SteamAPI_RegisterCallback(CCallbackBase* p_callback, int i_callback)
+extern "C" __declspec(dllexport) void SteamAPI_RegisterCallback(void* call_back_back, int i_callback)
 {
-    return steam_api_manager::SteamAPI_RegisterCallback(p_callback, i_callback);
+    return steam_api_manager::SteamAPI_RegisterCallback(call_back_back, i_callback);
 }
 
 extern "C" __declspec(dllexport) void SteamInternal_ContextInit(void* p_context_init_data)
 {
     return steam_api_manager::SteamInternal_ContextInit(p_context_init_data);
+}
+
+extern "C" __declspec(dllexport) bool SteamAPI_RestartAppIfNecessary(uint32 own_app_id)
+{
+    return false;
+}
+
+extern "C" __declspec(dllexport) void SteamAPI_ISteamFriends_ClearRichPresence(void* steam_friends)
+{
+    return steam_api_manager::SteamAPI_ISteamFriends_ClearRichPresence(steam_friends);
 }

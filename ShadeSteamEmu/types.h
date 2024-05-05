@@ -163,10 +163,12 @@ typedef uint64_t (*SteamAPI_ISteam_CreateLobby_Ptr)(void* instance_ptr, ELobbyTy
 typedef EPersonaState (*SteamAPI_ISteam_GetFriendPersonaState_Ptr)(void* instance_ptr, uint64_t steamid_friend);
 typedef bool (*SteamAPI_ISteam_InviteUserToLobby_Ptr)(void* instance_ptr, uint64_t steamid_lobby, uint64_t steamid_invitee);
 typedef void (*SteamAPI_ISteam_LeaveLobby_Ptr)(void* instance_ptr, uint64_t steamid_lobby);
-typedef void (*SteamAPI_RegisterCallResult_Ptr)(CCallbackBase* pCallback, uint64_t api_call);
-typedef void (*SteamAPI_UnregisterCallResult_Ptr)(CCallbackBase* pCallback, uint64_t api_call);
-typedef void (*SteamAPI_UnregisterCallback_Ptr)(CCallbackBase* pCallback);
+typedef void (*SteamAPI_RegisterCallResult_Ptr)( void* call_back_back, uint64_t api_call);
+typedef void (*SteamAPI_UnregisterCallResult_Ptr)( void* call_back_back, uint64_t api_call);
+typedef void (*SteamAPI_UnregisterCallback_Ptr)(void* call_back_back);
 typedef void (*SteamAPI_RunCallbacks_Ptr)();
 typedef void (*SteamInternal_FindOrCreateGameServerInterface_Ptr)(void*, const char*);
-typedef void (*SteamAPI_RegisterCallback_Ptr)(CCallbackBase*, int);
+typedef void (*SteamAPI_RegisterCallback_Ptr)(void* call_back_back, int i_callback);
 typedef void (*SteamInternal_ContextInit_Ptr)(void*);
+typedef bool (*SteamAPI_RestartAppIfNecessary_Ptr)(uint32);
+typedef void (*SteamAPI_ISteamFriends_ClearRichPresence_Ptr)(void*);

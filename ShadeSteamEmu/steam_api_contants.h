@@ -73,3 +73,5 @@ constexpr auto steam_run_callbacks = "SteamAPI_RunCallbacks";
 constexpr auto steaminternal_find_or_create_game_server_interface = "SteamInternal_FindOrCreateGameServerInterface";
 constexpr auto steamapi_register_callback = "SteamAPI_RegisterCallback";
 constexpr auto steaminternal_context_init = "SteamInternal_ContextInit";
+constexpr auto steamapi_restart_app_if_necessary = "SteamAPI_RestartAppIfNecessary";
+constexpr auto steamapi_isteamfriends_clear_rich_presence = "SteamAPI_ISteamFriends_ClearRichPresence";

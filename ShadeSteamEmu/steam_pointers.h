@@ -83,6 +83,8 @@ public:
     static SteamInternal_FindOrCreateGameServerInterface_Ptr find_or_create_game_server_interface_ptr;
     static SteamAPI_RegisterCallback_Ptr register_callback_ptr;
     static SteamInternal_ContextInit_Ptr context_init_ptr;
+    static SteamAPI_RestartAppIfNecessary_Ptr restart_app_if_necessary_ptr;
+    static SteamAPI_ISteamFriends_ClearRichPresence_Ptr clear_rich_presence_ptr;
 
     static bool initialize_function_pointers();
     template <typename FuncPtrType>

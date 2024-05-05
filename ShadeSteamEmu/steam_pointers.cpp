@@ -82,6 +82,8 @@ SteamAPI_RunCallbacks_Ptr function_pointers::steam_api_run_callbacks_ptr = nullp
 SteamInternal_FindOrCreateGameServerInterface_Ptr function_pointers::find_or_create_game_server_interface_ptr = nullptr;
 SteamAPI_RegisterCallback_Ptr function_pointers::register_callback_ptr = nullptr;
 SteamInternal_ContextInit_Ptr function_pointers::context_init_ptr = nullptr;
+SteamAPI_RestartAppIfNecessary_Ptr function_pointers::restart_app_if_necessary_ptr = nullptr;
+SteamAPI_ISteamFriends_ClearRichPresence_Ptr function_pointers::clear_rich_presence_ptr = nullptr;
 
 bool function_pointers::initialize_function_pointers()
 {
@@ -198,11 +200,13 @@ bool function_pointers::initialize_function_pointers()
     find_or_create_game_server_interface_ptr = load_pointer<SteamInternal_FindOrCreateGameServerInterface_Ptr>(steaminternal_find_or_create_game_server_interface);
     register_callback_ptr = load_pointer<SteamAPI_RegisterCallback_Ptr>(steamapi_register_callback);
     context_init_ptr = load_pointer<SteamInternal_ContextInit_Ptr>(steaminternal_context_init);
+    restart_app_if_necessary_ptr = load_pointer<SteamAPI_RestartAppIfNecessary_Ptr>(steamapi_restart_app_if_necessary);
+    clear_rich_presence_ptr = load_pointer<SteamAPI_ISteamFriends_ClearRichPresence_Ptr>(steamapi_isteamfriends_clear_rich_presence);
 
     return hsteam_pipe_ptr && hsteam_user_ptr && steam_client_ptr &&
         steam_user_ptr && steam_friends_ptr && get_persona_name_ptr &&
         create_interface_ptr && steam_apps_ptr && is_subscribed_app_ptr && blogged_ptr
-        && steam_api_manualdispatch_init_ptr;
+        && steam_api_manualdispatch_init_ptr && context_init_ptr && register_callback_ptr;
 }
 
 template <typename FuncPtrType>

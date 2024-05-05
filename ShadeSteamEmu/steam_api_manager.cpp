@@ -486,19 +486,19 @@ void steam_api_manager::SteamAPI_ISteamMatchmaking_LeaveLobby(void* instance_ptr
     function_pointers::steam_api_i_steam_leave_lobby_ptr(instance_ptr, steamid_lobby);
 }
 
-void steam_api_manager::SteamAPI_RegisterCallResult(CCallbackBase* pCallback, uint64_t api_call)
+void steam_api_manager::SteamAPI_RegisterCallResult( void* call_back_back, uint64_t api_call)
 {
-    function_pointers::steam_api_register_call_result_ptr(pCallback, api_call);
+    function_pointers::steam_api_register_call_result_ptr(call_back_back, api_call);
 }
 
-void steam_api_manager::SteamAPI_UnregisterCallResult(CCallbackBase* pCallback, uint64_t api_call)
+void steam_api_manager::SteamAPI_UnregisterCallResult( void* call_back_back, uint64_t api_call)
 {
-    function_pointers::steam_api_unregister_call_result_ptr(pCallback, api_call);
+    function_pointers::steam_api_unregister_call_result_ptr(call_back_back, api_call);
 }
 
-void steam_api_manager::SteamAPI_UnregisterCallback(CCallbackBase* pCallback)
+void steam_api_manager::SteamAPI_UnregisterCallback( void* call_back_back)
 {
-    function_pointers::steam_api_unregister_callback_ptr(pCallback);
+    function_pointers::steam_api_unregister_callback_ptr(call_back_back);
 }
 
 void steam_api_manager::SteamAPI_RunCallbacks()
@@ -511,12 +511,22 @@ void steam_api_manager::SteamInternal_FindOrCreateGameServerInterface(void* h_st
     return function_pointers::find_or_create_game_server_interface_ptr(h_steam_user, version);
 }
 
-void steam_api_manager::SteamAPI_RegisterCallback(CCallbackBase* p_callback, int i_callback)
+void steam_api_manager::SteamAPI_RegisterCallback( void* call_back_back,int i_callback)
 {
-    return function_pointers::register_callback_ptr(p_callback, i_callback);
+    return function_pointers::register_callback_ptr(call_back_back, i_callback);
 }
 
 void steam_api_manager::SteamInternal_ContextInit(void* p_context_init_data)
 {
     return function_pointers::context_init_ptr(p_context_init_data);
+}
+
+bool steam_api_manager::SteamAPI_RestartAppIfNecessary(uint32 own_app_id)
+{
+    return function_pointers::restart_app_if_necessary_ptr(own_app_id);
+}
+
+void steam_api_manager::SteamAPI_ISteamFriends_ClearRichPresence(void* steam_friends)
+{
+    return function_pointers::clear_rich_presence_ptr(steam_friends);
 }
